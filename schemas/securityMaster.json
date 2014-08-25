@@ -4,10 +4,9 @@
 
 	"new" : {
 		"table":"securityProfiles",
-		"title": "Bezpečnostný profil",
-		"transCode":"schema.securityMaster.title",
+		"title": "Nový bezpečnostný profil",
 		"security" : {
-			"$ref" : "uri://registries/security#profiles/security"
+			"$ref" : "uri://registries/security#profiles/_security"
 		},
 		"properties" : {
 			"baseData" : {
@@ -20,8 +19,8 @@
 	},
 	"search" : {
 		"table":"securityProfiles",
-		"transCode":"schema.securityMaster.title",
-		"title":"Bezpečnostný profil",
+		"transCode":"schema.member.view",
+		"title":"profil",
 		"listFields": {
 			"$ref": "uri://registries/security#profiles/listFields"
 		},
