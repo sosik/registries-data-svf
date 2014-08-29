@@ -1,4 +1,7 @@
 @media print {
+	@page {
+		margin: 10mm 15mm 20mm 20mm;
+	}
 	
 	#main-wrapper{
 		
