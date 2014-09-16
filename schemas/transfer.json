@@ -5,6 +5,12 @@
         "table": "transfers",
         "title": "Nová Zmena kl. príslušnosti",
         "xxtransCode": "schema.transfer.title",
+
+        "_fireEvents":{
+            "create": "event-transfer-created",
+            "update": "event-transfer-updated"
+        },
+
         "listFields": [
             {
                 "field": "baseData.player.refData.name",
