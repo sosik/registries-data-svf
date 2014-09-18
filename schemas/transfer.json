@@ -95,8 +95,14 @@
                             "prestup",
                             "hosťovanie",
                             "striedavý štart",
-                            "zahr. transfér"
+                            "zahr. transfer"
                         ],
+						"enumTransCodes":[
+							"schema.transfer.typ.transfer",
+							"schema.transfer.typ.hosting",
+							"schema.transfer.typ.alternating.start",
+							"schema.transfer.typ.foreign.transfer"
+						],
                         "render": {
                             "component": "psui-selectbox",
                             "searchable": true
@@ -144,6 +150,12 @@
                             "storno",
                             "v riešení"
                         ],
+						"enumTransCodes":[
+							"schema.transfer.state.approved",
+							"schema.transfer.state.unapproved",
+							"schema.transfer.state.cancel",
+							"schema.transfer.state.in.process"
+						],
                         "render": {
                             "component": "psui-selectbox",
                             "searchable": true
@@ -157,6 +169,10 @@
                             "ano",
                             "nie"
                         ],
+						"enumTransCodes":[
+							"schema.transfer.active.yes",
+							"schema.transfer.active.no"
+						],
                         "render": {
                             "component": "psui-selectbox",
                             "searchable": true

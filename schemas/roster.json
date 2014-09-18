@@ -91,7 +91,7 @@
                         "title": "Dátum poslednej modifikácie",
                         "type": "string",
                         "required": false,
-			             "readOnly": true,
+			            "readOnly": true,
                         "$timestamp" : true
                     }
                 }
@@ -264,7 +264,7 @@
             },
             {
                 "field": "baseData.prName",
-                "title": "Názov mužstva"
+                "title": "Názov družstva"
             }
         ],
         "properties": {

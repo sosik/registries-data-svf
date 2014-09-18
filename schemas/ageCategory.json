@@ -1,99 +1,108 @@
-{
-		"$schema": "http://json-schema.org/schema#",
-		"id": "uri://registries/ageCategory#",
-		"new": {
-				"table": "ageCategories",
-				"title": "Veková kategória",
-				"xxtransCode": "schema.stadium.title",
-				"listFields": [
-						{
-								"field": "baseData.name",
-								"title": "Názov kategórie"
-						}
-				],
-				"properties": {
-						"_security": {
-								"_create": {
-										"_static": [
-												"Security - write"
-										]
-								},
-								"_read": {
-										"_static": [
-												"Security - read"
-										]
-								},
-								"_modify": {
-										"_static": [
-												"Security - write"
-										]
-								}
-						},
-						"baseData": {
-								"title": "Základné údaje o súťaži",
-								"type": "object",
-								"properties": {
-										"name": {
-												"title": "Názov kategórie",
-												"type": "string",
-												"required": true
-										},
-										"description": {
-												"title": "Popis",
-												"type": "string",
-												"required": true
-										}
-								}
-						},
-						"computation": {
-								"title": "Údaje pre výpočet",
-								"type": "object",
-								"properties": {
-										"day": {
-												"title": "Deň",
-												"type": "string",
-												"required": true
-										},
-										"month": {
-												"title": "Mesiac",
-												"type": "string",
-												"required": true
-										},
-										"age": {
-												"title": "Počet rokov",
-												"type": "string",
-												"required": true
-										},
-										"operation": {
-												"title": "Operácia",
-												"type": "string",
-												"enum": [
-														"PO",
-														"PRED"
-												],
-												"required": true,
-												"render": {
-														"component": "psui-selectbox",
-														"searchable": true
-												}
-										}
-								}
-						}
-				}
-		},
-		"view": {
-				"$ref": "uri://registries/ageCategory#new"
-		},
-		"search": {
-				"table": "ageCategories",
-				"title": "súťaž",
-				"listFields": {
-						"$ref": "uri://registries/ageCategory#new/listFields"
-				},
-				"properties": {
-						"baseData": {
-								"$ref": "uri://registries/ageCategory#new/properties/baseData"
-						}
-				}
-		}
+{  
+   "$schema":"http://json-schema.org/schema#",
+   "id":"uri://registries/ageCategory#",
+   "new":{  
+      "table":"ageCategories",
+      "title":"Veková kategória",
+      "xxtransCode":"schema.stadium.title",
+      "listFields":[  
+         {  
+            "field":"baseData.name",
+            "title":"Názov kategórie"
+         }
+      ],
+      "properties":{  
+         "_security":{  
+            "_create":{  
+               "_static":[  
+                  "Security - write"
+               ]
+            },
+            "_read":{  
+               "_static":[  
+                  "Security - read"
+               ]
+            },
+            "_modify":{  
+               "_static":[  
+                  "Security - write"
+               ]
+            }
+         },
+         "baseData":{  
+            "title":"Základné údaje o súťaži",
+            "xxtransCode":"",
+            "type":"object",
+            "properties":{  
+               "name":{  
+                  "title":"Názov kategórie",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "required":true
+               },
+               "description":{  
+                  "title":"Popis",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "required":true
+               }
+            }
+         },
+         "computation":{  
+            "title":"Údaje pre výpočet",
+            "xxtransCode":"",
+            "type":"object",
+            "properties":{  
+               "day":{  
+                  "title":"Deň",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "required":true
+               },
+               "month":{  
+                  "title":"Mesiac",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "required":true
+               },
+               "age":{  
+                  "title":"Počet rokov",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "required":true
+               },
+               "operation":{  
+                  "title":"Operácia",
+                  "xxtransCode":"",
+                  "type":"string",
+                  "enum":[  
+                     "PO",
+                     "PRED"
+                  ],
+                  "required":true,
+                  "render":{  
+                     "component":"psui-selectbox",
+                     "searchable":true
+                  }
+               }
+            }
+         }
+      }
+   },
+   "view":{  
+      "$ref":"uri://registries/ageCategory#new"
+   },
+   "search":{  
+      "table":"ageCategories",
+      "title":"súťaž",
+      "xxtransCode":"",
+      "listFields":{  
+         "$ref":"uri://registries/ageCategory#new/listFields"
+      },
+      "properties":{  
+         "baseData":{  
+            "$ref":"uri://registries/ageCategory#new/properties/baseData"
+         }
+      }
+   }
 }

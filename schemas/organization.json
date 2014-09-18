@@ -70,7 +70,7 @@
                     "required": false,
                     "$objectLink": {
                         "registry": "organizations",
-                        "name": "association.name"
+						"name": "association.associationName"
                     }
                 },
                 "ico": {
@@ -91,7 +91,7 @@
                     "title": "Štadión",
                     "required": false,
                     "$objectLink": {
-                        "registry": "stadium",
+						"registry": "stadiums",
                         "name": "baseData.name"
                     }
                 },
@@ -102,6 +102,10 @@
                         "aktívny",
                         "neaktívny"
                     ],
+					"enumTransCodes":[
+						"schema.club.state.active",
+						"schema.club.state.inactive"
+					],
                     "required": false,
                     "render": {
                         "component": "psui-selectbox",
@@ -115,6 +119,10 @@
                         "Áno",
                         "Nie"
                     ],
+					"enumTransCodes":[
+						"schema.club.notPaying.yes",
+						"schema.club.notPaying.no"
+					],
                     "required": false,
                     "render": {
                         "component": "psui-selectbox",
@@ -210,6 +218,10 @@
                         "aktívny",
                         "neaktívny"
                     ],
+					"enumTransCodes":[
+						"schema.association.state.active",
+						"schema.association.state.inactive"
+					],
                     "required": false,
                     "render": {
                         "component": "psui-selectbox",
@@ -223,6 +235,10 @@
                         "Áno",
                         "Nie"
                     ],
+					"enumTransCodes":[
+						"schema.association.notPaying.yes",
+						"schema.association.notPaying.no"
+					],
                     "required": true,
                     "render": {
                         "component": "psui-selectbox",
