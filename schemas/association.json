@@ -34,7 +34,7 @@
         "listFields": [
             {
                 "field": "association.associationName",
-                "title": "Meno"
+                "title": "Názov zväzu"
             }
         ],
         "forcedCriteria": [

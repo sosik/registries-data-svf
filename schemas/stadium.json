@@ -72,6 +72,11 @@
 							"ihrisko",
 							"štadión"
 						],
+						"enumTransCodes":[
+							"schema.stadium.type.hall",
+							"schema.stadium.type.playground",
+							"schema.stadium.type.stadium"
+						],
 						"render":{
 							"component": "psui-selectbox",
 							"searchable": true
@@ -84,6 +89,10 @@
 						"enum":[
 							"prírodný",
 							"umelý"
+						],
+						"enumTransCodes":[
+							"schema.stadium.surface.natural",
+							"schema.stadium.surface.artificial"
 						],
 						"render":{
 							"component": "psui-selectbox",
@@ -118,15 +127,7 @@
 					"Illumination": {
 						"title": "Osvetlenie (lux)",
 						"type": "string",
-						"enum": [
-							"Áno",
-							"Nie"
-						],
-						"required": false,
-						"render":{
-							"component": "psui-selectbox",
-							"searchable": true
-						}
+						"required": false
 					},
 					"runningFrom": {
 						"title": "V prevádzke od",
@@ -171,7 +172,7 @@
 						"required": false
 					},
 					"managersContact": {
-						"title": "Kontakt na Manažéra",
+						"title": "Kontakt na manažéra",
 						"type": "string",
 						"required": false
 					}
