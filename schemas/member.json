@@ -3,8 +3,8 @@
     "id": "uri://registries/member#",
     "new": {
         "table": "people",
-		"title" : "Nova osoba",
-		"transCode": "schema.person.title",
+		"title" : "Môj profil",
+		"transCode": "schema.member.title",
         "properties": {
 			"_security": {
 				"$ref": "uri://registries/people#person/properties/_security"
