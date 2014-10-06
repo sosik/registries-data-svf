@@ -2,6 +2,57 @@ angular.module('registries')
 .config(['$translateProvider', function($translateProvider) {
 	$translateProvider.preferredLanguage('sk');
 	$translateProvider.translations('sk', {
+		"menu.member.title": "Člen",
+		"menu.player.title": "Hráč",
+		"menu.fees.title": "Poplatok",
+		"menu.referee.title": "Rozhodca",
+		"menu.coach.title": "Tréner",
+		"menu.stadium.title": "Štadión",
+		"menu.club.title": "Klub",
+		"menu.association.title": "Zväz",
+		"menu.person.title": "Osoba",
+		"menu.transfer.title": "Zmena kl. príslušnosti",
+		"menu.season.title": "Súťažný ročník",
+		"menu.age.category.title": "Veková kategória",
+		"menu.roster.title": "Súpisky",
+		"menu.competition.title": "Súťaž",
+		"menu.company.title": "Organizácia",
+		"menu.my.profile.title": "Môj profil",
+		"menu.permissions.title": "Oprávnenia",
+		"menu.schemas.title": "Schémy",
+		
+		"menu.new.person.lower.level": "Nová osoba",
+		"menu.new.company.lower.level": "Nová spoločnosť",
+		
+		"menu.search.person.lower.level": "Hľadať osobu",
+		"menu.search.member.lower.level": "Hľadať člena",
+		"menu.search.player.lower.level": "Hľadať hráča",
+		"menu.search.referee.lower.level": "Hľadať rozhodcu",
+		"menu.search.coach.lower.level": "Hľadať trénera",
+		"menu.search.company.lower.level": "Hľadať spoločnosť",
+		"menu.search.club.lower.level": "Hľadať klub",
+		"menu.search.association.lower.level": "Hľadať zväz",
+		"menu.search.statistic.lower.level": "Hľadať štatistu",
+		"menu.search.medic.lower.level": "Hľadať zdravotníka",
+				
+		"menu.new.lower.level": "Nový",
+		"menu.new.lower.level.she": "Nová",
+		"menu.search.lower.level": "Hľadať",
+		"menu.profile.lower.level": "Profil",
+		"menu.change.password.lower.level": "Zmena hesla",
+		"menu.new.group.lower.level": "Nová skupina",
+		"menu.permission.groups.lower.level": "Skupiny oprávnení",
+		"menu.user.permissions.lower.level": "Oprávnenia používateľov",
+		"menu.schema.list.lower.level": "Zoznam schém",
+		"menu.new.profile.lower.level":"Nový bezpečnostný profil",
+		"menu.profiles.lower.level":"Hľadať bezpečnostný profil",
+		"menu.statistics.title":"Štatistiky",
+		"menu.statistics.show.title":"Zobraziť",
+		"menu.massmailing.title":"Hromadná pošta",
+		"menu.massmailing.new.lower.level":"Nový vzor", 
+		"menu.massmailing.search.lower.level":"Vyhľadáť",
+		"menu.massmailing.send.title":"Odoslať",
+	
 		"schema.people.baseData": "Základné informácie",
 		"schema.people.identifier": "Identifikačné číslo",
 		"schema.people.registrationID": "Registračné číslo",
@@ -65,6 +116,8 @@ angular.module('registries')
 		"schema.people.note":"Poznámka",
 		"schema.people.language":"Jazykové znalosti",
 		"schema.people.playerLicense":"Číslo HL",
+		"schema.people.statisticLicense":"Číslo ŠL",
+		"schema.people.medicLicense":"Číslo ZL",
 		
 		"schema.stadium.type.hall":"Hala",
 		"schema.stadium.type.playground":"Ihrisko",
@@ -128,10 +181,62 @@ angular.module('registries')
 		"schema.org.view":"Organizácia",
 		
 		"schema.member.title": "Môj profil",
-		"schema.member.view":"Osoba"
+		"schema.member.view":"Profil člena"
 	});
 	
 	$translateProvider.translations('cz', {
+		"menu.member.title": "Člen",
+		"menu.player.title": "Hráč",
+		"menu.fees.title": "Poplatek",
+		"menu.referee.title": "Rozhodca",
+		"menu.coach.title": "Tréner",
+		"menu.stadium.title": "Štadión",
+		"menu.club.title": "Klub",
+		"menu.association.title": "Zväz",
+		"menu.person.title": "Osoba",
+		"menu.transfer.title": "Zmena kl. príslušnosti",
+		"menu.season.title": "Súťažný ročník",
+		"menu.age.category.title": "Veková kategória",
+		"menu.roster.title": "Súpisky",
+		"menu.competition.title": "Súťaž",
+		"menu.company.title": "Organizace",
+		"menu.my.profile.title": "Můj profil",
+		"menu.permissions.title": "Oprávnění",
+		"menu.schemas.title": "Schémata",
+
+		"menu.new.person.lower.level": "Nová osoba",
+		"menu.new.company.lower.level": "Nová společnosť",
+		
+		"menu.search.person.lower.level": "Hledat osobu",
+		"menu.search.member.lower.level": "Hledat člena",
+		"menu.search.player.lower.level": "Hledat hráča",
+		"menu.search.referee.lower.level": "Hledat rozhodcu",
+		"menu.search.statistic.lower.level": "Hledat statistu",
+		"menu.search.medic.lower.level": "Hledat zdravotníka",
+		"menu.search.coach.lower.level": "Hledat trenéra",
+		"menu.search.company.lower.level": "Hledat spoločnosť",
+		"menu.search.club.lower.level": "Hledat klub",
+		"menu.search.association.lower.level": "Hledat zväz",
+		
+		"menu.new.lower.level": "Nový",
+		"menu.new.lower.level.she": "Nová",
+		"menu.search.lower.level": "Hledat",
+		"menu.profile.lower.level": "Profil",
+		"menu.change.password.lower.level": "Změna hesla",
+		"menu.new.group.lower.level": "Nová skupina",
+		"menu.permission.groups.lower.level": "Skupiny oprávnění",
+		"menu.user.permissions.lower.level": "Oprávnění uživatelů",
+		"menu.schema.list.lower.level": "Seznam schémat",
+		"menu.new.profile.lower.level":"Nový bezpečnostnej profil",
+		"menu.profiles.lower.level":"Hledat bezpečnostnej profil",
+		"menu.statistics.title":"Statistiky",
+		"menu.statistics.show.title":"Zobrazit",
+		"menu.massmailing.title":"Hromadní pošta",
+		"menu.massmailing.new.lower.level":"Nový vzor", 
+		"menu.massmailing.search.lower.level":"Vyhledat vzor",
+		"menu.massmailing.send.title":"Odeslat",
+	
+	
 		"schema.people.baseData": "Základné informácie",
 		"schema.people.identifier": "Identifikačné číslo",
 		"schema.people.registrationID": "Registračné číslo",
@@ -193,6 +298,8 @@ angular.module('registries')
 		"schema.people.note":"Poznámka",
 		"schema.people.language":"Jazykové znalosti",
 		"schema.people.playerLicense":"Číslo HL",
+		"schema.people.statisticLicense":"Číslo ŠL",
+		"schema.people.medicLicense":"Číslo ZL",
 		
 		"schema.stadium.type.hall":"Hala",
 		"schema.stadium.type.playground":"Ihrisko",
@@ -256,6 +363,6 @@ angular.module('registries')
 		"schema.org.view":"Organizácia",
 
 		"schema.member.title": "Môj profil",
-		"schema.member.view":"Osoba"
+		"schema.member.view":"Profil člena"
 	});
 }]);

@@ -503,6 +503,13 @@
                         "searchable": true
                     }
                 },
+                "medicLicense": {
+                    "title": "Číslo ZL",
+                    "transCode": "schema.people.medicLicense",
+                    "type": "string",
+                    "required": false,
+                    "$sequence": "medicLicense"
+                },
                 "stateOfMedic": {
                     "title": "Stav zdravotníka",
                     "type": "string",
@@ -583,6 +590,13 @@
                         "component": "psui-selectbox",
                         "searchable": true
                     }
+                },
+                "statisticLicense": {
+                    "title": "Číslo ŠL",
+                    "transCode": "schema.people.statisticLicense",
+                    "type": "string",
+                    "required": false,
+                    "$sequence": "statisticLicense"
                 },
                 "stateOfStatistic": {
                     "title": "Stav štatistu",
