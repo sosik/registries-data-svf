@@ -149,6 +149,36 @@ angular.module('registries')
 		"schema.competition.gender.man":"Muž",
 		"schema.competition.gender.woman":"Žena",
 		
+		"schema.stadium.type.hall":"Hala",
+		"schema.stadium.type.playground":"Ihrisko",
+		"schema.stadium.type.stadium":"Štadión",
+		"schema.stadium.surface.natural":"Prírodný",
+		"schema.stadium.surface.artificial":"Umelý",
+		
+		"schema.club.state.active":"Aktívny",
+		"schema.club.state.inactive":"Neaktívny",
+		"schema.club.notPaying.yes":"Áno",
+		"schema.club.notPaying.no":"Nie",
+
+		"schema.association.state.active":"Aktívny",
+		"schema.association.state.inactive":"Neaktívny",
+		"schema.association.notPaying.yes":"Áno",
+		"schema.association.notPaying.no":"Nie",
+		
+		"schema.transfer.typ.transfer":"Prestup",
+		"schema.transfer.typ.hosting":"Hosťovanie",
+		"schema.transfer.typ.alternating.start":"Striedavý štart",
+		"schema.transfer.typ.foreign.transfer":"Zahr. prestup",
+		"schema.transfer.state.approved":"Schválený",
+		"schema.transfer.state.unapproved":"Neschváleny",
+		"schema.transfer.state.cancel":"Storno",
+		"schema.transfer.state.in.process":"V riešení",
+		"schema.transfer.active.yes":"Áno",
+		"schema.transfer.active.no":"Nie",
+		
+		"schema.competition.gender.man":"Muž",
+		"schema.competition.gender.woman":"Žena",
+		
 		"schema.org.logoInfo":"Logo",
 		"schema.org.logo":"Logo",
 		"schema.org.baseData":"Základné údaje",
@@ -300,6 +330,36 @@ angular.module('registries')
 		"schema.people.playerLicense":"Číslo HL",
 		"schema.people.statisticLicense":"Číslo ŠL",
 		"schema.people.medicLicense":"Číslo ZL",
+		
+		"schema.stadium.type.hall":"Hala",
+		"schema.stadium.type.playground":"Ihrisko",
+		"schema.stadium.type.stadium":"Štadión",
+		"schema.stadium.surface.natural":"Prírodný",
+		"schema.stadium.surface.artificial":"Umelý",
+		
+		"schema.club.state.active":"Aktívny",
+		"schema.club.state.inactive":"Neaktívny",
+		"schema.club.notPaying.yes":"Áno",
+		"schema.club.notPaying.no":"Nie",
+
+		"schema.association.state.active":"Aktívny",
+		"schema.association.state.inactive":"Neaktívny",
+		"schema.association.notPaying.yes":"Áno",
+		"schema.association.notPaying.no":"Nie",
+		
+		"schema.transfer.typ.transfer":"Prestup",
+		"schema.transfer.typ.hosting":"Hosťovanie",
+		"schema.transfer.typ.alternating.start":"Striedavý štart",
+		"schema.transfer.typ.foreign.transfer":"Zahr. prestup",
+		"schema.transfer.state.approved":"Schválený",
+		"schema.transfer.state.unapproved":"Neschváleny",
+		"schema.transfer.state.cancel":"Storno",
+		"schema.transfer.state.in.process":"V riešení",
+		"schema.transfer.active.yes":"Áno",
+		"schema.transfer.active.no":"Nie",
+		
+		"schema.competition.gender.man":"Muž",
+		"schema.competition.gender.woman":"Žena",
 		
 		"schema.stadium.type.hall":"Hala",
 		"schema.stadium.type.playground":"Ihrisko",
