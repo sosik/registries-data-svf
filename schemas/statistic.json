@@ -3,7 +3,7 @@
     "id": "uri://registries/statistic#",
     "new": {
         "table": "people",
-        "title": "Štatista",
+        "title": "Štatistik",
         "xxtransCode": "schema.person.title",
         "properties": {
             "_security": {
@@ -34,7 +34,7 @@
     },
     "search": {
         "table": "people",
-        "title": "štatista",
+        "title": "štatistik",
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },

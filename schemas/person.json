@@ -5,7 +5,7 @@
 	"new" : {
 		"table" : "people",
 		"title" : "Osoba",
-		"transCode": "schema.member.view",
+		"transCode": "schema.member.new",
 		"properties" : {
 			"baseData" : {
 				"$ref": "uri://registries/people#person/properties/baseData"
@@ -94,7 +94,7 @@
 	"search" : {
 		"table": "people",
     	"title": "osoba",
-		"transCode":"schema.member.view",
+		"transCode":"schema.member.search",
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },

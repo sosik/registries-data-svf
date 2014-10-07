@@ -570,11 +570,11 @@
             }
         },
         "statistic": {
-            "title": "Štatista",
+            "title": "Štatistik",
             "type": "object",
             "properties": {
                 "isStatistic": {
-                    "title": "Je štatista",
+                    "title": "Je štatistik",
                     "transCode": "schema.people.isStatistic",
                     "type": " string",
                     "enum": [
@@ -599,7 +599,7 @@
                     "$sequence": "statisticLicense"
                 },
                 "stateOfStatistic": {
-                    "title": "Stav štatistu",
+                    "title": "Stav štatistika",
                     "type": "string",
                     "enum": [
                         "aktívny",

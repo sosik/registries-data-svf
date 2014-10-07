@@ -26,7 +26,12 @@
         }
     },
     "view": {
-        "$ref": "uri://registries/association#new"
+        "table": "organizations",
+        "title": "Profil organizacie",
+        "transCode":"schema.association.view",
+        "properties": {
+	        "$ref": "uri://registries/association#new/properties"
+        }
     },
     "search": {
         "table": "organizations",
