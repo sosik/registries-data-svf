@@ -507,8 +507,7 @@
                     "title": "Číslo ZL",
                     "transCode": "schema.people.medicLicense",
                     "type": "string",
-                    "required": false,
-                    "$sequence": "medicLicense"
+                    "required": false
                 },
                 "stateOfMedic": {
                     "title": "Stav zdravotníka",
@@ -595,8 +594,7 @@
                     "title": "Číslo ŠL",
                     "transCode": "schema.people.statisticLicense",
                     "type": "string",
-                    "required": false,
-                    "$sequence": "statisticLicense"
+                    "required": false
                 },
                 "stateOfStatistic": {
                     "title": "Stav štatistika",
