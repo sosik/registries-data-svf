@@ -1,0 +1,12 @@
+[
+    {
+        "name": "new-transfer-updates-player",
+        "file": "data/js/event-handlers/transfer-modified.js",
+        "enabled": true
+    },
+    {
+        "name": "processing-error-handler",
+        "file": "data/js/event-handlers/processing-error-handler.js",
+        "enabled": true
+    }
+]
