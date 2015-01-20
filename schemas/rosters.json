@@ -20,7 +20,7 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "organizations",
-						"name": "club.name"
+						"name": "club.name.v"
 					},
 					"required": true
 				},
@@ -78,8 +78,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -97,8 +97,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -116,8 +116,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -135,8 +135,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -154,8 +154,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -173,8 +173,8 @@
 					"type": "object",
 					"objectLink": {
 						"registry": "people",
-						"surName": "baseData.surName",
-						"firstName": "baseData.name",
+						"surName": "baseData.surName.v",
+						"firstName": "baseData.name.v",
 						"license": "coach.coachLicense",
 						"licenseType": "coach.coachLicenseType"
 					},
@@ -203,8 +203,8 @@
 					"items": {
 						"objectLink": {
 							"registry": "people",
-							"surName": "baseData.surName",
-							"firstName": "baseData.name",
+							"surName": "baseData.surName.v",
+							"firstName": "baseData.name.v",
 							"birthDate": "baseData.birthDate",
 							"playerLicense": "player.playerLicense"
 						},

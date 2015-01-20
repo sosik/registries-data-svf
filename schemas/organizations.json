@@ -38,7 +38,8 @@
 					"title": "Názov klubu",
 					"transCode":"schema.org.club.name",
 					"type": "string",
-					"required":true
+					"required":true,
+					"collate":true
 				},
 				"association": {
 					"title": "Zväz",

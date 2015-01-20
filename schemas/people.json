@@ -263,7 +263,7 @@
 					"transCode": "schema.people.officer.club",
 					"objectLink": {
 						"registry": "organizations",
-						"name": "club.name"
+						"name": "club.name.v"
 					}
 				},
 				"note": {
@@ -449,7 +449,7 @@
 					"transCode": "schema.people.player.clubOfFirstRegistration",
 					"objectLink": {
 						"registry": "organizations",
-						"name": "club.name"
+						"name": "club.name.v"
 					}
 				},
 				"club": {
@@ -457,7 +457,7 @@
 					"transCode": "schema.people.player.club",
 					"objectLink": {
 						"registry": "organizations",
-						"name": "club.name"
+						"name": "club.name.v"
 					}
 				},
 				"stateOfPlayer": {
