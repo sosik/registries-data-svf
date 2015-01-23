@@ -865,11 +865,7 @@
 	"views":{
 		"fullperson":{
 			"new":{
-				"extends":"uri://registries/people#views/fullperson/view",
-				"saveBySchema": "uri://registries/people#views/fullperson/view",
-				"properties":{
-					"registrationID":null
-				}
+				"extends":"uri://registries/people#views/fullperson/view"
 			},
 			"view":{
 				"extends":"uri://registries/people#models/fullperson",
