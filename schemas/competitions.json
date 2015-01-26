@@ -62,7 +62,7 @@
 
 	"models":{
 		"competitions":{
-			"table": "competitons",
+			"table": "competitions",
 			"title": "Súťaž",
 			"transCode":"schema.competition.title",
 			"security": {
