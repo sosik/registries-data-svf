@@ -62,7 +62,7 @@
 					"transCode": "schema.roster.lastModification",
 					"type": "string",
 					"readOnly": true,
-					"$timestamp": true
+					"timestamp": true
 				}
 			}
 		},
