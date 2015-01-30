@@ -5,6 +5,7 @@
 	var objectTools = require(process.cwd() + '/build/server/ObjectTools.js');
 	var universalDaoModule = require(process.cwd() + '/build/server/UniversalDao.js');
 	var dateUtils = require(process.cwd()+'/build/server/DateUtils.js').DateUtils;
+	var QueryFilter = require(process.cwd()+'/build/server/QueryFilter.js');
 
 	function TransferHandler(ctx) {
 		this.ctx=ctx;
@@ -66,7 +67,41 @@
 
 		};
 
+		this.removePlayerFromRoster=function(playerId,seasonId){
 
+			var rostersDao = new universalDaoModule.UniversalDao(
+				this.ctx.mongoDriver,
+				{collectionName: 'rosters'}
+			);
+
+			var qf=QueryFilter.create();
+			qf.addCriterium("baseData.season.oid",QueryFilter.operation.EQUAL,seasonId);
+			qf.addCriterium("listOfPlayers.players",QueryFilter.operation.ALL,[{"registry" : "people","oid" : playerId}]);
+
+			rostersDao.find(qf,function(err,rosters){
+
+				if (err) {
+					log.error(err);
+				}
+				rosters.forEach(function(roster){
+					var filteredPlayers=[];
+					 	roster.listOfPlayers.players.forEach(function(playerLink){
+						if (playerLink && playerLink.oid!==playerId){
+							filteredPlayers.push(playerLink);
+						}
+					});
+					roster.listOfPlayers.players=filteredPlayers;
+					roster.baseData.lastModification=new Date().getTime();
+					rostersDao.save(roster,function(err){
+						if (err){
+							log.error(err);
+							return;
+						}
+						log.debug("player removed from roster",playerId,roster);
+					});
+				});
+			});
+		}
 		this.handleHostingStart=function (event){
 			var self=this;
 			var transferDao = new universalDaoModule.UniversalDao(
@@ -82,8 +117,7 @@
 			transferDao.get(event.transferId,function (err,transfer){
 				if (err){log.error(err);return;}
 				transfer.baseData.active='TRUE';
-
-				peopleDao.get(transfer.baseData.player.oid,function(err,player){
+				self.peopleDao.get(transfer.baseData.player.oid,function(err,player){
 					if (err){log.error(err);return;}
 					if (!player.player){
 						self.ctx.eventRegistry.emitProcesingError('Osoba nie je hracom. Transfer nebol vykonany.',event);
@@ -98,6 +132,9 @@
 						return;
 					}
 					player.player.club=transfer.baseData.clubTo;
+					player.player.hostingStartDate=transfer.baseData.dateFrom;
+					player.player.hostingEndDate=transfer.baseData.dateTo;
+					var playerId=player.id;
 
 					peopleDao.save(player, function(err,data){
 						if (err){log.error(err);return;}
@@ -105,6 +142,7 @@
 						transferDao.save(transfer,function(err,data){
 							if (err){log.error(err);return;}
 							log.verbose('transfer updated');
+							self.removePlayerFromRoster(playerId,transfer.baseData.season.oid);
 						});
 					});
 				});
@@ -145,15 +183,20 @@
 						self.ctx.eventRegistry.emitProcesingError('Klub TO sa nezhoduje s aktualnym klubom. Transfer nebol vykonany.',event);
 						return;
 					}
-					player.player.club=transfer.baseData.clubFrom;
 
+					player.player.club=transfer.baseData.clubFrom;
+					player.player.hostingStartDate=null;
+					player.player.hostingEndDate=null;
+					var playerId=player.id;
 					peopleDao.save(player, function(err,data){
 						if (err){log.error(err);return;}
 
 						transferDao.save(transfer,function(err,data){
 							if (err){log.error(err);return;}
 							log.verbose('transfer updated');
+							self.removePlayerFromRoster(playerId,transfer.baseData.season.oid);
 						});
+
 					});
 				});
 			});
@@ -195,12 +238,13 @@
 
 					player.player.club=transfer.baseData.clubTo;
 					player.player.clubOfFirstRegistration=transfer.baseData.clubTo;
+					var playerId=player.id;
 					peopleDao.save(player, function(err,data){
 						if (err){log.error(err);return;}
 
 						transferDao.save(transfer,function(err,data){
 							if (err){log.error(err);return;}
-							log.verbose('transfer updated');
+							self.removePlayerFromRoster(playerId,transfer.baseData.season.oid);
 						});
 					});
 				});
