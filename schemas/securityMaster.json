@@ -19,9 +19,9 @@
 		"$ref" : "uri://registries/security#profilesmaster/new"
 	},
 	"search" : {
-		"table":"Bezpečnostný profil",
+		"table":"securityProfiles",
 		"transCode":"schema.securityMaster.title",
-		"title":"profil",
+		"title":"Bezpečnostný profil",
 		"listFields": {
 			"$ref": "uri://registries/security#profiles/listFields"
 		},
