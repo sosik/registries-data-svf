@@ -33,6 +33,12 @@
 									log.err(err);
 									return;
 								}
+								//FIXME: temporary solution for race condition
+								var now= new Date().getTime();
+								if (tsTo< now){
+									tsTo=now+1000;
+								}
+
 								eventScheduler.scheduleEvent(tsTo,'event-hosting-end',{transferId:entity.id},[entity.id],function(err,data){
 									if (err){
 										log.err(err);
@@ -117,7 +123,7 @@
 			transferDao.get(event.transferId,function (err,transfer){
 				if (err){log.error(err);return;}
 				transfer.baseData.active='TRUE';
-				self.peopleDao.get(transfer.baseData.player.oid,function(err,player){
+				peopleDao.get(transfer.baseData.player.oid,function(err,player){
 					if (err){log.error(err);return;}
 					if (!player.player){
 						self.ctx.eventRegistry.emitProcesingError('Osoba nie je hracom. Transfer nebol vykonany.',event);
