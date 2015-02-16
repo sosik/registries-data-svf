@@ -922,10 +922,14 @@
 				"extends":"uri://registries/people#models/coach",
 				"listFields": [
 					{
+						"field": "coach.coachLicense",
+						"title": "Číslo Lic"
+					},
+					{
 						"field": "baseData.surName",
 						"title": "Priezvisko",
 						"transCode":"schema.people.surName"
-						},
+					},
 					{
 						"field": "baseData.name",
 						"title": "Meno",
