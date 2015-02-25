@@ -30,7 +30,7 @@
 					"title": "Kód klubu",
 					"transCode": "schema.org.club.codeOfClub",
 					"type": "string",
-					"$sequence": "clubs"
+					"sequence": "clubs"
 				},
 				"name": {
 					"title": "Názov klubu",
@@ -378,12 +378,12 @@
 						"Registry - write"
 					]
 				},
-				"_read": {
+				"read": {
 					"static": [
 						"Registry - read"
 					]
 				},
-				"_modify": {
+				"modify": {
 					"static": [
 						"Registry - write"
 					]
@@ -422,12 +422,12 @@
 						"Registry - write"
 					]
 				},
-				"_read": {
+				"read": {
 					"static": [
 						"Registry - read"
 					]
 				},
-				"_modify": {
+				"modify": {
 					"static": [
 						"Registry - write"
 					]
@@ -464,6 +464,23 @@
 			"table": "organizations",
 			"title": "Zväzy",
 			"transCode": "schema.association.title",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
 			"forcedCriteria": [
 				{
 					"f": "association",
