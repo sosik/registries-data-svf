@@ -4,16 +4,16 @@
 
 	"blocks":{
 		"datetime":{
-			"type":"String"
+			"type":"string"
 		},
 		"date":{
-			"type":"String",
+			"type":"string",
 			"render": {
 				"component": "psui-datepicker"
 			}
 		},
 		"year":{
-			"type":"String"
+			"type":"string"
 		},
 		"email":{
 			"type":"object",

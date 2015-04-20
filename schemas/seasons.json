@@ -3,14 +3,14 @@
 	"id": "uri://registries/seasons#",
 	"blocks":{
 		"baseData": {
+			"type": "object",
 			"title": "Základné údaje",
 			"transCode":"schema.season.baseData",
-			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string",
 					"title": "Názov",
 					"transCode":"schema.season.name",
-					"type": "string",
 					"required": true
 				},
 				"startSeason": {

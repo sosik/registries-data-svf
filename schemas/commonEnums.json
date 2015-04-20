@@ -36,6 +36,7 @@
 			}
 		},
 		"gender":{
+			"type":"string",
 			"translationPrefix":"enum.gender",
 			"enum":[
 				"M",

@@ -18,63 +18,50 @@
 						"title": "Súťažný ročnik",
 						"transCode":"schema.competition.season",
 						"type": "string",
-						"$objectLink2": {
-							"schema": "uri://registries/seasons#views/seasons",
+						"objectLink2": {
+							"schema": "uri://registries/seasons#views/seasons/view",
 							"fields": {
 								"name": "baseData.name"
 							}
-						},
-						"objectLink": {
-							"registry": "seasons",
-							"name": "baseData.name"
 						},
 						"required": true
 					},
 					"association": {
+						"type": "object",
 						"title": "Zväz",
 						"transCode":"schema.competition.association",
-						"type": "object",
-						"type": "string",
-						"$objectLink2": {
-							"schema": "uri://registries/organizations#views/association",
+						"objectLink2": {
+							"schema": "uri://registries/organizations#views/association/view",
 							"fields": {
-								"name": "baseData.name"
+								"name": "association.associationName"
 							}
-						},
-						"objectLink": {
-							"registry": "organizations",
-							"name": "association.associationName"
 						},
 						"required": true
 					},
 					"ageCategory": {
+						"type": "object",
 						"title": "Veková kategória",
 						"transCode":"schema.competition.ageCategory",
-						"type": "object",
-						"type": "string",
-						"$objectLink2": {
-							"schema": "uri://registries/ageCategory#views/ageCategory",
+						"objectLink2": {
+							"schema": "uri://registries/ageCategory#views/ageCategory/view",
 							"fields": {
 								"name": "baseData.name"
+
 							}
-						},
-						"objectLink": {
-							"registry": "ageCategories",
-							"name": "baseData.name"
 						},
 						"required": true
 					},
 					"gender": {
+						"type": " string",
 						"extends":"uri://registries/commonenums#blocks/gender",
 						"title": "Pohlavie",
 						"transCode": "schema.people.gender",
-						"type": " string",
 						"required": true
 					},
 					"competitionLevel": {
+						"type": "integer",
 						"title": "Úroveň súťaže",
 						"transCode":"schema.competition.competitionLevel",
-						"type": "integer",
 						"required": true
 					}
 				}

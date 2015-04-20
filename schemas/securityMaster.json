@@ -6,7 +6,7 @@
 		"table":"securityProfiles",
 		"title": "Nový bezpečnostný profil",
 		"security" : {
-			"$ref" : "uri://registries/security#profiles/_security"
+			"$ref" : "uri://registries/security#profiles/security"
 		},
 		"properties" : {
 			"baseData" : {

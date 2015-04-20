@@ -4,27 +4,27 @@
 
 	"blocks":{
 		"baseData":{
-			"title": "Informácie o družstve k sezóne 2013/2014",
 			"type": "object",
+			"title": "Informácie o družstve k sezóne 2013/2014",
 			"properties": {
 				"name": {
-					"title": "Názov družstva",
 					"type": "string",
+					"title": "Názov družstva",
 					"required": true
 				},
 				"marketingName": {
-					"title": "Marketingový názov družstva",
 					"type": "string",
+					"title": "Marketingový názov družstva",
 					"required": true
 				},
 				"ageLevel": {
-					"title": "Veková úroveň (max. do)",
 					"type": "string",
+					"title": "Veková úroveň (max. do)",
 					"required": true
 				},
 				"category": {
-					"title": "Kategória (A - Z)",
 					"type": "string",
+					"title": "Kategória (A - Z)",
 					"required": false
 				},
 				"sex": {
@@ -37,29 +37,35 @@
 					"required": true
 				},
 				"club": {
+					"type":"object",
 					"title": "Klub",
 					"required": true,
-					"objectLink": {
-						"registry": "organizations",
-						"name": "baseData.name"
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/club",
+						"fields": {
+							"name": "club.name"
+						}
 					}
 				},
 				"typeOfFutbal": {
-					"title": "Typ futbalu",
 					"type": "string",
+					"title": "Typ futbalu",
 					"required": true
 				},
 				"season": {
-					"title": "Sezóna",
 					"type": "string",
+					"title": "Sezóna",
 					"required": true
 				},
 				"Stadium": {
+					"type":"object",
 					"title": "Štadión",
 					"required": true,
-					"objectLink": {
-						"registry": "stadium",
-						"name": "baseData.name"
+					"objectLink2": {
+						"schema": "uri://registries/stadiums#views/stadium/view",
+						"fields": {
+							"name": "baseData.name"
+						}
 					}
 				}
 			}
@@ -69,23 +75,22 @@
 			"type": "object",
 			"properties": {
 				"nameAndSurname": {
-					"title": "Meno a priezvisko",
 					"type": "string",
+					"title": "Meno a priezvisko",
 					"required": false
 				},
 				"email": {
-					"title": "E-mail",
 					"type": "string",
+					"title": "E-mail",
 					"required": false
 				},
 				"Action": {
-					"title": "Akcia",
 					"type": "string",
+					"title": "Akcia",
 					"required": false
 				}
 			}
 		}
-
 	},
 
 	"models":{

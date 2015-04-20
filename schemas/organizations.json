@@ -8,49 +8,52 @@
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string",
 					"title": "Obchodný názov spoločnosti",
 					"transCode": "schema.org.name",
-					"type": "string",
 					"required": true
 				},
 				"stateOfOrganization": {
+					"type": "string",
 					"title": "Stav organizacie",
 					"transCode": "schema.org.stateOfOrganization",
-					"type": "string",
 					"required": true
 				}
 			}
 		},
 		"club": {
+			"type": "object",
 			"title": "Základné údaje",
 			"transCode": "schema.org.baseData",
-			"type": "object",
 			"properties": {
 				"codeOfClub": {
+					"type": "string",
 					"title": "Kód klubu",
 					"transCode": "schema.org.club.codeOfClub",
-					"type": "string",
 					"sequence": "clubs"
 				},
 				"name": {
+					"type": "string",
 					"title": "Názov klubu",
 					"transCode": "schema.org.club.name",
-					"type": "string",
 					"required": true,
 					"collate": true
 				},
 				"association": {
+					"type":"object",
 					"title": "Zväz",
 					"transCode": "schema.org.club.association",
-					"objectLink": {
-						"registry": "organizations",
-						"name": "association.associationName"
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/association/view",
+						"fields": {
+							"name": "association.associationName"
+						}
 					}
 				},
 				"ico": {
+					"type": "string",
 					"title": "IČO",
-					"transCode": "schema.org.ico",
-					"type": "string"
+					"transCode": "schema.org.ico"
 				},
 				"startDate": {
 					"extends": "uri://registries/commontypes#blocks/date",
@@ -58,24 +61,26 @@
 					"transCode": "schema.org.club.startDate"
 				},
 				"stadium": {
+					"type":"object",
 					"title": "Štadión",
 					"transCode": "schema.org.club.stadium",
-					"objectLink": {
-						"registry": "stadiums",
-						"name": "baseData.name"
+					"objectLink2": {
+						"schema": "uri://registries/stadiums#views/stadium/view",
+						"fields": {
+							"name": "baseData.name"
+						}
 					}
 				},
 				"stateOfClub": {
+					"type": "string",
 					"extends": "uri://registries/commonenums#blocks/active",
 					"title": "Stav klubu",
-					"transCode": "schema.org.club.stateOfClub",
-					"type": "string"
+					"transCode": "schema.org.club.stateOfClub"
 				},
 				"notPaying": {
 					"extends": "uri://registries/commonenums#blocks/boolean",
 					"title": "Neplatič",
-					"transCode": "schema.org.club.notPaying",
-					"type": "string"
+					"transCode": "schema.org.club.notPaying"
 				},
 				"dateOfRegistration": {
 					"extends": "uri://registries/commontypes#blocks/date",
@@ -90,37 +95,37 @@
 			"type": "object",
 			"properties": {
 				"contactPerson": {
+					"type": "string",
 					"title": "Kontaktná osoba",
-					"transCode": "schema.org.club.contactPerson",
-					"type": "string"
+					"transCode": "schema.org.club.contactPerson"
 				},
 				"mobileNumberOfContactPerson": {
+					"type": "string",
 					"title": "Telefónne číslo kontaktnej osoby",
-					"transCode": "schema.org.club.mobileNumberOfContactPerson",
-					"type": "string"
+					"transCode": "schema.org.club.mobileNumberOfContactPerson"
 				},
 				"street": {
+					"type": "string",
 					"title": "Ulica",
-					"transCode": "schema.org.club.street",
-					"type": "string"
+					"transCode": "schema.org.club.street"
 				},
 				"houseNumber": {
+					"type": "string",
 					"title": "Číslo domu",
-					"transCode": "schema.org.club.houseNumber",
-					"type": "string"
+					"transCode": "schema.org.club.houseNumber"
 				},
 				"city": {
 					"$ref": "uri://registries/towns#town"
 				},
 				"zipCode": {
+					"type": "string",
 					"title": "PSČ",
-					"transCode": "schema.org.club.zipCode",
-					"type": "string"
+					"transCode": "schema.org.club.zipCode"
 				},
 				"region": {
+					"type": "string",
 					"title": "Kraj",
-					"transCode": "schema.org.club.region",
-					"type": "string"
+					"transCode": "schema.org.club.region"
 				},
 				"country": {
 					"$ref": "uri://registries/countries#country"
@@ -133,24 +138,25 @@
 			"type": "object",
 			"properties": {
 				"associationName": {
+					"type": "string",
 					"title": "Názov zväzu",
 					"transCode": "schema.org.assoc.associationName",
-					"type": "string",
 					"required": true
 				},
 				"shortName": {
+					"type": "string",
 					"title": "Skrátený názov zväzu",
-					"transCode": "schema.org.assoc.shortName",
-					"type": "string"
+					"transCode": "schema.org.assoc.shortName"
 				},
 				"higherAssociation": {
 					"title": "Nadradený zväz",
 					"transCode": "schema.org.assoc.higherAssociation",
-					"objectLink": {
-						"registry": "organizations",
-						"name": "association.associationName"
-					}
-				},
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/association",
+						"fields": {
+							"name": "association.associationName"
+						}
+					}				},
 				"startDate": {
 					"extends": "uri://registries/commontypes#blocks/date",
 					"title": "Dátum založenia",
@@ -159,14 +165,12 @@
 				"stateOfAssociation": {
 					"extends": "uri://registries/commonenums#blocks/active",
 					"title": "Stav zväzu",
-					"transCode": "schema.org.assoc.stateOfAssociation",
-					"type": "string"
+					"transCode": "schema.org.assoc.stateOfAssociation"
 				},
 				"notPaying": {
 					"extends": "uri://registries/commonenums#blocks/boolean",
 					"title": "Neplatič",
 					"transCode": "schema.org.assoc.notPaying",
-					"type": "string",
 					"required": true
 				},
 				"dateOfRegistration": {
@@ -187,27 +191,27 @@
 					"type": "string"
 				},
 				"mobileNumberOfContactPerson": {
+					"type": "string",
 					"title": "Telefónne číslo kontaktnej osoby",
-					"transCode": "schema.org.assoc.mobileNumberOfContactPerson",
-					"type": "string"
+					"transCode": "schema.org.assoc.mobileNumberOfContactPerson"
 				},
 				"street": {
+					"type": "string",
 					"title": "Ulica",
-					"transCode": "schema.org.assoc.street",
-					"type": "string"
+					"transCode": "schema.org.assoc.street"
 				},
 				"houseNumber": {
+					"type": "string",
 					"title": "Číslo domu",
-					"transCode": "schema.org.assoc.houseNumber",
-					"type": "string"
+					"transCode": "schema.org.assoc.houseNumber"
 				},
 				"city": {
 					"$ref": "uri://registries/towns#town"
 				},
 				"zipCode": {
+					"type": "string",
 					"title": "PSČ",
-					"transCode": "schema.org.assoc.zipCode",
-					"type": "string"
+					"transCode": "schema.org.assoc.zipCode"
 				},
 				"country": {
 					"$ref": "uri://registries/countries#country"
@@ -220,9 +224,9 @@
 			"type": "object",
 			"properties": {
 				"photo": {
+					"type": "string",
 					"title": "Logo",
 					"transCode": "schema.org.logo",
-					"type": "string",
 					"render": {
 						"component": "psui-uploadable-image",
 						"height": 300,
@@ -237,128 +241,128 @@
 			"type": "object",
 			"properties": {
 				"street": {
+					"type": "string",
 					"title": "Ulica",
-					"transCode": "schema.org.street",
-					"type": "string"
+					"transCode": "schema.org.street"
 				},
 				"houseNumber": {
+					"type": "string",
 					"title": "Číslo domu",
-					"transCode": "schema.org.houseNumber",
-					"type": "string"
+					"transCode": "schema.org.houseNumber"
 				},
 				"city": {
 					"$ref": "uri://registries/towns#town"
 				},
 				"zipCode": {
+					"type": "string",
 					"title": "PSČ",
-					"transCode": "schema.org.zipCode",
-					"type": "string"
+					"transCode": "schema.org.zipCode"
 				},
 				"country": {
 					"$ref": "uri://registries/countries#country"
 				},
 				"phoneNumber": {
+					"type": "string",
 					"title": "Telefón",
-					"transCode": "schema.org.phoneNumber",
-					"type": "string"
+					"transCode": "schema.org.phoneNumber"
 				},
 				"mobileNumber": {
+					"type": "string",
 					"title": "Mobil",
-					"transCode": "schema.org.mobileNumber",
-					"type": "string"
+					"transCode": "schema.org.mobileNumber"
 				},
 				"email": {
+					"type": "string",
 					"title": "E-mail",
-					"transCode": "schema.org.email",
-					"type": "string"
+					"transCode": "schema.org.email"
 				},
 				"fax": {
+					"type": "string",
 					"title": "FAX",
-					"transCode": "schema.org.fax",
-					"type": "string"
+					"transCode": "schema.org.fax"
 				},
 				"webPage": {
+					"type": "string",
 					"title": "Webová stránka",
-					"transCode": "schema.org.webPage",
-					"type": "string"
+					"transCode": "schema.org.webPage"
 				}
 			}
 		},
 		"bankInfo": {
+			"type": "object",
 			"title": "Fakturačné údaje",
 			"transCode": "schema.org.bankInfo",
-			"type": "object",
 			"properties": {
 				"statutarOrgan": {
+					"type": "string",
 					"title": "Štatutárny orgán",
-					"transCode": "schema.org.statutarOrgan",
-					"type": "string"
+					"transCode": "schema.org.statutarOrgan"
 				},
 				"ico": {
+					"type": "string",
 					"title": "IČO",
 					"transCode": "schema.org.ico",
-					"type": "string",
 					"required": true
 				},
 				"dic": {
+					"type": "string",
 					"title": "DIČ",
-					"transCode": "schema.org.dic",
-					"type": "string"
+					"transCode": "schema.org.dic"
 				},
 				"countryIcDPH": {
+					"type": "string",
 					"title": "krajina IČ DPH",
-					"transCode": "schema.org.country.icDPH",
-					"type": "string"
+					"transCode": "schema.org.country.icDPH"
 				},
 				"icDPH": {
+					"type": "string",
 					"title": "IČ DPH",
-					"transCode": "schema.org.icDPH",
-					"type": "string"
+					"transCode": "schema.org.icDPH"
 				},
 				"bankAccount": {
+					"type": "string",
 					"title": "Číslo účtu",
-					"transCode": "schema.org.bankAccount",
-					"type": "string"
+					"transCode": "schema.org.bankAccount"
 				},
 				"bankCode": {
+					"type": "string",
 					"title": "Kód banky",
-					"transCode": "schema.org.bankCode",
-					"type": "string"
+					"transCode": "schema.org.bankCode"
 				},
 				"bank": {
+					"type": "string",
 					"title": "Názov banky",
-					"transCode": "schema.org.bank",
-					"type": "string"
+					"transCode": "schema.org.bank"
 				},
 				"iban": {
+					"type": "string",
 					"title": "IBAN",
-					"transCode": "schema.org.iban",
-					"type": "string"
+					"transCode": "schema.org.iban"
 				},
 				"swift": {
+					"type": "string",
 					"title": "SWIFT",
-					"transCode": "schema.org.swift",
-					"type": "string"
+					"transCode": "schema.org.swift"
 				},
 				"street": {
+					"type": "string",
 					"title": "Ulica",
 					"transCode": "schema.org.street",
-					"type": "string",
 					"required": true
 				},
 				"houseNumber": {
+					"type": "string",
 					"title": "Číslo domu",
 					"transCode": "schema.org.houseNumber",
-					"type": "string",
 					"required": true
 				},
 				"city": {
 					"$ref": "uri://registries/towns#town"
 				},
 				"zipCode": {
+					"type": "string",
 					"title": "PSČ",
 					"transCode": "schema.org.zipCode",
-					"type": "string",
 					"required": true
 				},
 				"country": {

@@ -15,50 +15,60 @@
 					"required": true
 				},
 				"player": {
+					"type": "object",
 					"title": "Hráč",
 					"transCode":"schema.transfer.player",
-					"type": "string",
 					"required": true,
-					"objectLink": {
-						"registry": "people",
-						"surName": "baseData.surName.v",
-						"name": "baseData.name.v",
-						"playerLicense": "player.playerLicense"
+					"objectLink2": {
+						"schema": "uri://registries/people#views/player/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name",
+							"birthDate": "baseData.birthDate",
+							"playerLicense": "player.playerLicense"
+						}
 					}
 				},
 				"clubFrom": {
 					"title": "Z klubu",
 					"transCode":"schema.transfer.clubFrom",
-					"type": "string",
+					"type": "object",
 					"required": true,
-					"objectLink": {
-						"registry": "organizations",
-						"name": "club.name.v"
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/club/view",
+						"fields": {
+							"name": "club.name"
+						}
 					}
 				},
 				"clubTo": {
+					"type": "object",
 					"title": "Do klubu",
 					"transCode":"schema.transfer.clubTo",
-					"type": "string",
 					"required": true,
-					"objectLink": {
-						"registry": "organizations",
-						"name": "club.name.v"
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/club/view",
+						"fields": {
+							"name": "club.name"
+						}
 					}
 				},
 				"season": {
+					"type": "object",
 					"title": "Súťažný ročnik",
 					"transCode":"schema.transfer.season",
-					"objectLink": {
-						"registry": "seasons",
-						"name": "baseData.name"
+					"objectLink2": {
+						"schema": "uri://registries/seasons#views/seasons/view",
+						"fields": {
+							"name": "baseData.name"
+						}
 					},
 					"required": true
 				},
 				"typeOfTransfer": {
+					"type": "string",
 					"title": "Typ zmeny",
 					"transCode":"schema.transfer.typeOfTransfer",
-					"type": "string",
 					"required": true,
 					"enum": [
 						"prestup",

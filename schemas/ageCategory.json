@@ -8,46 +8,46 @@
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string",
 					"title": "Názov kategórie",
 					"transCode": "schema.ageCategory.name",
-					"type": "string",
 					"required": true
 				},
 				"description": {
+					"type": "string",
 					"title": "Popis",
 					"transCode": "schema.ageCategory.description",
-					"type": "string",
 					"required": true
 				}
 			}
 		},
 		"computation": {
+			"type": "object",
 			"title": "Údaje pre výpočet",
 			"transCode": "schema.ageCategory.computation",
-			"type": "object",
 			"properties": {
 				"day": {
+					"type": "string",
 					"title": "Deň",
 					"transCode": "schema.ageCategory.day",
-					"type": "string",
 					"required": true
 				},
 				"month": {
+					"type": "string",
 					"title": "Mesiac",
 					"transCode": "schema.ageCategory.month",
-					"type": "string",
 					"required": true
 				},
 				"age": {
+					"type": "string",
 					"title": "Počet rokov",
 					"transCode": "schema.ageCategory.year",
-					"type": "string",
 					"required": true
 				},
 				"operation": {
+					"type": "string",
 					"title": "Operácia",
 					"transCode": "schema.ageCategory.operation",
-					"type": "string",
 					"enum": [
 						"PO",
 						"PRED"
