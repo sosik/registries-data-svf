@@ -1,78 +1,74 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/competitions#",
-
-	"blocks":{
+	"blocks": {
 		"baseData": {
-				"title": "Základné údaje",
-				"transCode":"schema.competition.baseData",
-				"type": "object",
-				"properties": {
-					"name": {
-						"title": "Názov súťaže",
-						"transCode":"schema.competition.name",
-						"type": "string",
-						"required": true
+			"title": "Základné údaje",
+			"transCode": "schema.competition.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov súťaže",
+					"transCode": "schema.competition.name",
+					"type": "string",
+					"required": true
+				},
+				"season": {
+					"title": "Súťažný ročnik",
+					"transCode": "schema.competition.season",
+					"type": "string",
+					"objectLink2": {
+						"schema": "uri://registries/seasons#views/seasons/view",
+						"fields": {
+							"name": "baseData.name"
+						}
 					},
-					"season": {
-						"title": "Súťažný ročnik",
-						"transCode":"schema.competition.season",
-						"type": "string",
-						"objectLink2": {
-							"schema": "uri://registries/seasons#views/seasons/view",
-							"fields": {
-								"name": "baseData.name"
-							}
-						},
-						"required": true
+					"required": true
+				},
+				"association": {
+					"type": "object",
+					"title": "Zväz",
+					"transCode": "schema.competition.association",
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/association/view",
+						"fields": {
+							"name": "association.associationName"
+						}
 					},
-					"association": {
-						"type": "object",
-						"title": "Zväz",
-						"transCode":"schema.competition.association",
-						"objectLink2": {
-							"schema": "uri://registries/organizations#views/association/view",
-							"fields": {
-								"name": "association.associationName"
-							}
-						},
-						"required": true
+					"required": true
+				},
+				"ageCategory": {
+					"type": "object",
+					"title": "Veková kategória",
+					"transCode": "schema.competition.ageCategory",
+					"objectLink2": {
+						"schema": "uri://registries/ageCategory#views/ageCategory/view",
+						"fields": {
+							"name": "baseData.name"
+						}
 					},
-					"ageCategory": {
-						"type": "object",
-						"title": "Veková kategória",
-						"transCode":"schema.competition.ageCategory",
-						"objectLink2": {
-							"schema": "uri://registries/ageCategory#views/ageCategory/view",
-							"fields": {
-								"name": "baseData.name"
-
-							}
-						},
-						"required": true
-					},
-					"gender": {
-						"type": " string",
-						"extends":"uri://registries/commonenums#blocks/gender",
-						"title": "Pohlavie",
-						"transCode": "schema.people.gender",
-						"required": true
-					},
-					"competitionLevel": {
-						"type": "integer",
-						"title": "Úroveň súťaže",
-						"transCode":"schema.competition.competitionLevel",
-						"required": true
-					}
+					"required": true
+				},
+				"gender": {
+					"extends": "uri://registries/commonenums#blocks/gender",
+					"title": "Pohlavie",
+					"transCode": "schema.people.gender",
+					"required": true
+				},
+				"competitionLevel": {
+					"type": "string",
+					"title": "Úroveň súťaže",
+					"transCode": "schema.competition.competitionLevel",
+					"required": true
 				}
 			}
+		}
 	},
-
-	"models":{
-		"competitions":{
+	"models": {
+		"competitions": {
 			"table": "competitions",
 			"title": "Súťaž",
-			"transCode":"schema.competition.title",
+			"transCode": "schema.competition.title",
 			"security": {
 				"_create": {
 					"_static": [
@@ -90,29 +86,27 @@
 					]
 				}
 			},
-			"fireEvents":{
+			"fireEvents": {
 				"create": "event-transfer-created",
 				"update": "event-transfer-updated"
 			},
-			"properties":{
-				"baseData":{
-					"extends":"uri://registries/competitions#blocks/baseData"
+			"properties": {
+				"baseData": {
+					"extends": "uri://registries/competitions#blocks/baseData"
 				}
 			}
 		}
-
 	},
-
-	"views":{
-		"competitions":{
-			"new":{
-				"extends":"uri://registries/competitions#models/competitions"
+	"views": {
+		"competitions": {
+			"new": {
+				"extends": "uri://registries/competitions#models/competitions"
 			},
-			"view":{
-				"extends":"uri://registries/competitions#models/competitions"
+			"view": {
+				"extends": "uri://registries/competitions#models/competitions"
 			},
-			"search":{
-				"extends":"uri://registries/competitions#models/competitions",
+			"search": {
+				"extends": "uri://registries/competitions#models/competitions",
 				"listFields": [
 					{
 						"field": "baseData.name",
@@ -121,6 +115,5 @@
 				]
 			}
 		}
-
 	}
 }
