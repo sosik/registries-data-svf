@@ -907,6 +907,15 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/fullperson",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Ffullperson/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo":null
 				},
@@ -943,11 +952,16 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/coach",
-				"listFields": [
+				"clientActions": [
 					{
-						"field": "coach.coachLicense",
-						"title": "Číslo Lic"
-					},
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fcoach/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
 					{
 						"field": "baseData.surName",
 						"title": "Priezvisko",
@@ -980,6 +994,15 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/referee",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Freferee/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.surName",
@@ -1013,6 +1036,15 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/officer",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fofficer/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.surName",
@@ -1023,7 +1055,7 @@
 						"field": "baseData.name",
 						"title": "Meno",
 						"transCode":"schema.people.name"
-						},
+					},
 					{
 						"field": "baseData.birthDate",
 						"title": "Dátum narodenia",
@@ -1046,22 +1078,35 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/medic",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fmedic/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.surName",
-						"title": "Priezvisko"
-						},
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
+					},
 					{
 						"field": "baseData.name",
-						"title": "Meno"
+						"title": "Meno",
+						"transCode":"schema.people.name"
 					},
 					{
 						"field": "baseData.birthDate",
-						"title": "Dátum narodenia"
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
 					},
 					{
 						"field": "contactInfo.city",
-						"title": "Mesto"
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}
@@ -1075,27 +1120,39 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/statistic",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fstatistic/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.surName",
-						"title": "Priezvisko"
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
 					},
 					{
 						"field": "baseData.name",
-						"title": "Meno"
+						"title": "Meno",
+						"transCode":"schema.people.name"
 					},
 					{
 						"field": "baseData.birthDate",
-						"title": "Dátum narodenia"
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
 					},
 					{
 						"field": "contactInfo.city",
-						"title": "Mesto"
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}
 		},
-
 
 		"player":{
 			"new":{
@@ -1116,27 +1173,41 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/player",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fplayer/{{model.id}}"
+						}
+					}
+				],
 				"title":"Hráč",
 				"listFields": [
 					{
 						"field": "player.playerLicense",
-						"title": "Číslo HL"
+						"title": "Číslo HL",
+						"transCode":"schema.people.player.playerLicense"
 					},
 					{
 						"field": "baseData.surName",
-						"title": "Priezvisko"
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
 					},
 					{
 						"field": "baseData.name",
-						"title": "Meno"
+						"title": "Meno",
+						"transCode":"schema.people.name"
 					},
 					{
 						"field": "baseData.birthDate",
-						"title": "Dátum narodenia"
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
 					},
 					{
 						"field": "contactInfo.city",
-						"title": "Mesto"
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}
@@ -1156,19 +1227,23 @@
 				"listFields": [
 					{
 						"field": "baseData.surName",
-						"title": "Priezvisko"
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
 					},
 					{
 						"field": "baseData.name",
-						"title": "Meno"
+						"title": "Meno",
+						"transCode":"schema.people.name"
 					},
 					{
 						"field": "baseData.birthDate",
-						"title": "Dátum narodenia"
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
 					},
 					{
 						"field": "contactInfo.city",
-						"title": "Mesto"
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}

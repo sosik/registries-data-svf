@@ -67,10 +67,20 @@
 			},
 			"search":{
 				"extends":"uri://registries/seasons#models/seasons",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fseasons~23views~2Fseasons/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.name",
-						"title": "Názov súťaže"
+						"title": "Názov",
+						"transCode":"schema.season.name"
 					}
 				]
 			}

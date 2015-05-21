@@ -190,14 +190,25 @@
 			},
 			"search":{
 				"extends":"uri://registries/stadiums#models/stadiums",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fstadiums~23views~2Fstadium/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field":"baseData.name",
-						"title":"Názov športového objektu"
+						"title":"Názov športového objektu",
+						"transCode":"schema.stadium.name"
 					},
 					{
 						"field":"additionalData.overallCapacity",
-						"title":"Celková kapacita"
+						"title":"Celková kapacita",
+						"transCode":"schema.stadium.overallCapacity"
 					}
 				]
 			}

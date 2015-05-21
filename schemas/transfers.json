@@ -188,22 +188,35 @@
 			},
 			"search": {
 				"extends": "uri://registries/transfers#models/transfers",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Ftransfers~23views~2Ftransfers/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
-						"field": "baseData.player.refData.name",
-						"title": "Meno"
+						"field": "baseData.typeOfTransfer",
+						"title": "Typ zmeny",
+						"transCode": "schema.transfer.typeOfTransfer"
 					},
 					{
-						"field": "baseData.player.refData.surName",
-						"title": "Priezvisko"
+						"field": "baseData.player",
+						"title": "Hráč",
+						"transCode": "schema.transfer.player"
 					},
 					{
-						"field": "baseData.clubFrom.refData.name",
-						"title": "Z klubu"
+						"field": "baseData.clubFrom",
+						"title": "Z klubu",
+						"transCode": "schema.transfer.clubFrom"
 					},
 					{
-						"field": "baseData.clubTo.refData.name",
-						"title": "Do klubu"
+						"field": "baseData.clubTo",
+						"title": "Do klubu",
+						"transCode": "schema.transfer.clubTo"
 					}
 				]
 			}

@@ -107,10 +107,20 @@
 			},
 			"search": {
 				"extends": "uri://registries/ageCategory#models/ageCategory",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FageCategory~23views~2FageCategory/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.name",
-						"title": "Názov kategórie"
+						"title": "Názov kategórie",
+						"transCode": "schema.ageCategory.name"
 					}
 				]
 			}

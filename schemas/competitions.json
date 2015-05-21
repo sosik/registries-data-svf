@@ -70,18 +70,18 @@
 			"title": "Súťaž",
 			"transCode": "schema.competition.title",
 			"security": {
-				"_create": {
-					"_static": [
+				"create": {
+					"static": [
 						"Security - write"
 					]
 				},
-				"_read": {
-					"_static": [
+				"read": {
+					"static": [
 						"Security - read"
 					]
 				},
-				"_modify": {
-					"_static": [
+				"modify": {
+					"static": [
 						"Security - write"
 					]
 				}
@@ -107,10 +107,20 @@
 			},
 			"search": {
 				"extends": "uri://registries/competitions#models/competitions",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fcompetitions~23views~2Fcompetitions/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.name",
-						"title": "Názov súťaže"
+						"title": "Názov súťaže",
+						"transCode": "schema.competition.name"
 					}
 				]
 			}

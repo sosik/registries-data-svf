@@ -239,22 +239,35 @@
 			},
 			"search": {
 				"extends": "uri://registries/rosters#models/rosters",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frosters~23views~2Frosters/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
-						"field": "baseData.season.refData.name",
-						"title": "Sezóna"
+						"field": "baseData.season",
+						"title": "Sezóna",
+						"transCode": "schema.roster.season"
 					},
 					{
-						"field": "baseData.competition.refData.name",
-						"title": "Súťaž"
+						"field": "baseData.competition",
+						"title": "Súťaž",
+						"transCode": "schema.roster.competition"
 					},
 					{
-						"field": "baseData.club.refData.name",
-						"title": "Klub"
+						"field": "baseData.club",
+						"title": "Klub",
+						"transCode": "schema.roster.club"
 					},
 					{
 						"field": "baseData.prName",
-						"title": "Názov družstva"
+						"title": "Názov družstva",
+						"transCode": "schema.roster.prName"
 					}
 				]
 			}

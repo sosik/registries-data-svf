@@ -521,17 +521,28 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/club",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fclub/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"logoInfo": null
 				},
 				"listFields": [
 					{
 						"field": "club.codeOfClub",
-						"title": "Klub ID"
+						"title": "Klub ID",
+						"transCode": "schema.org.club.codeOfClub"
 					},
 					{
 						"field": "club.name",
-						"title": "Názov klubu"
+						"title": "Názov klubu",
+						"transCode": "schema.org.club.name"
 					}
 				]
 			}
@@ -545,14 +556,25 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/company",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fcompany/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "club.codeOfClub",
-						"title": "Klub ID"
+						"title": "Klub ID",
+						"transCode": "schema.org.club.codeOfClub"
 					},
 					{
 						"field": "club.name",
-						"title": "Názov klubu"
+						"title": "Názov klubu",
+						"transCode": "schema.org.club.name"
 					}
 				]
 			}
@@ -566,13 +588,23 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/association",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fassociation/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"logoInfo": null
 				},
 				"listFields": [
 					{
 						"field": "association.associationName",
-						"title": "Názov zväzu"
+						"title": "Názov zväzu",
+						"transCode": "schema.org.assoc.associationName"
 					}
 				]
 			}
