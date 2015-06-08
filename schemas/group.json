@@ -38,9 +38,11 @@
 				"parent": {
 					"title": "Rodič",
 					"transCode": "schema.group.baseData.parent",
-					"$objectLink": {
-						"registry": "groups",
-						"name": "baseData.name"
+					"objectLink2": {
+						"schema":"uri://registries/security#group",
+						"fields":{
+							"name": "baseData.name"
+						}
 					}
 				}
 			}

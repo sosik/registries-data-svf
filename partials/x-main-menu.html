@@ -1,87 +1,117 @@
 <ul xpsui-menu-items>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.person.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry People'])"><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.person.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/people#views/fullperson'|xpsuiuriescape}}"><span>Nový</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/fullperson/search'|xpsuiuriescape}}"><span>{{'menu.search.person.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/player/search'|xpsuiuriescape}}"><span>{{'menu.search.player.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/referee/search'|xpsuiuriescape}}"><span>{{'menu.search.referee.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/coach/search'|xpsuiuriescape}}"><span>{{'menu.search.coach.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/statistic/search'|xpsuiuriescape}}"><span>{{'menu.search.statistic.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/people#views/medic/search'|xpsuiuriescape}}"><span>{{'menu.search.medic.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/people#views/fullperson'|xpsuiuriescape}}"><span>{{'menu.new.person.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/fullperson/search'|xpsuiuriescape}}"><span>{{'menu.search.person.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Person - read - KM'])"><a href="#/registry/search/{{'uri://registries/people#views/fullperson-km/search'|xpsuiuriescape}}"><span>Hladať osobu(KM)</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/player/search'|xpsuiuriescape}}"><span>{{'menu.search.player.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/referee/search'|xpsuiuriescape}}"><span>{{'menu.search.referee.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/coach/search'|xpsuiuriescape}}"><span>{{'menu.search.coach.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/statistic/search'|xpsuiuriescape}}"><span>{{'menu.search.statistic.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/medic/search'|xpsuiuriescape}}"><span>{{'menu.search.medic.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-flag fa-2x"></i><span>{{'menu.stadium.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="icon-flag fa-2x"></i><span>{{'menu.stadium.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/stadiums#views/stadium'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/stadiums#views/stadium'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
 			<li><a href="#/registry/search/{{'uri://registries/stadiums#views/stadium/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-home fa-2x"></i><span>{{'menu.club.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry Club'])"><a href="#" class="x-submenu-toggle"><i class="icon-home fa-2x"></i><span>{{'menu.club.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/organizations#views/club'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/organizations#views/club/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/organizations#views/club'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/organizations#views/club/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Club - read - KM'])"><a href="#/registry/search/{{'uri://registries/organizations#views/club-km/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-briefcase fa-2x"></i><span>{{'menu.association.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="icon-briefcase fa-2x"></i><span>{{'menu.association.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/organizations#views/association'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/organizations#views/association'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
 			<li><a href="#/registry/search/{{'uri://registries/organizations#views/association/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-forward fa-2x"></i><span>{{'menu.transfer.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="icon-forward fa-2x"></i><span>{{'menu.transfer.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/transfers#views/transfers'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/transfers#views/transfers'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
 			<li><a href="#/registry/search/{{'uri://registries/transfers#views/transfers/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-sheet-list fa-2x"></i><span>{{'menu.roster.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="icon-sheet-list fa-2x"></i><span>{{'menu.roster.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/rosters#views/rosters'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/rosters#views/rosters'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
 			<li><a href="#/registry/search/{{'uri://registries/rosters#views/rosters/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-tag fa-2x"></i><span>{{'menu.age.category.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry Competitions'])"><a href="#" class="x-submenu-toggle"><i class="icon-star fa-2x"></i><span>{{'menu.competition.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/ageCategory#views/ageCategory'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/ageCategory#views/ageCategory/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/competitions#views/competitions'|xpsuiuriescape}}"><span>{{'menu.new.competition.lower.level.she' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/competitions#views/competitions/search'|xpsuiuriescape}}"><span>{{'menu.search.competition.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/competitionPart#views/competitionPart'|xpsuiuriescape}}"><span>{{'menu.new.competitionPart.lower.level.she' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/competitionPart#views/competitionPart/search'|xpsuiuriescape}}"><span>{{'menu.search.competitionPart.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"> <a href="#/registry/new/{{'uri://registries/schedule#views/schedule'|xpsuiuriescape}}"><span>{{'menu.new.schedule.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/schedule#views/schedule/search'|xpsuiuriescape}}"><span>{{'menu.search.schedule.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/refereeReports#views/refereeReports'|xpsuiuriescape}}"><span>{{'menu.refereeReport.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['RefereeReport - read - KM'])"><a href="#/registry/search/{{'uri://registries/refereeReports#views/refereeReports-km/search'|xpsuiuriescape}}"><span>{{'menu.refereeReport.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/refereeReports#views/refereeReports/search'|xpsuiuriescape}}"><span>{{'menu.refereeReport.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/nominations#views/nominations'|xpsuiuriescape}}"><span>{{'menu.nomination.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/nominations#views/nominations/search'|xpsuiuriescape}}"><span>{{'menu.nomination.search.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/seasons#views/seasons'|xpsuiuriescape}}"><span>{{'menu.new.season.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/seasons#views/seasons/search'|xpsuiuriescape}}"><span>{{'menu.search.season.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/ageCategory#views/ageCategory'|xpsuiuriescape}}"><span>{{'menu.new.ageCategory.lower.level.she' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/ageCategory#views/ageCategory/search'|xpsuiuriescape}}"><span>{{'menu.search.ageCategory.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-calendar fa-2x"></i><span>{{'menu.season.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="fa fa-tasks fa-2x"></i><span>{{'menu.requisitions.solver.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/seasons#views/seasons'|xpsuiuriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/seasons#views/seasons/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+			<!-- <li><a href="#/registry/search/{{'uri://registries/requisitions#views/requisitionSolver/search'|xpsuiuriescape}}"><span>{{'menu.requisitions.solver.search.lower.level' | translate}}</span></a></li> -->
+			<li><a href="#/registry/search/{{'uri://registries/requisitions#views/peopleRegistrationSolver/search'|xpsuiuriescape}}"><span>Hľadať registráciu</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/requisitions#views/dataChangeSolver/search'|xpsuiuriescape}}"><span>Hľadať zmenu údajov</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/requisitions#views/transferSolver/search'|xpsuiuriescape}}"><span>Hľadať žiadosť o transfer</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-star fa-2x"></i><span>{{'menu.competition.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry Requisitions'])"><a href="#" class="x-submenu-toggle"><i class="fa fa-edit fa-2x"></i><span>{{'menu.requisitions.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/competitions#views/competitions'|xpsuiuriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/competitions#views/competitions/search'|xpsuiuriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+			<!-- <li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/requisitions#views/requisitionApplicant'|xpsuiuriescape}}"><span>{{'menu.requisitions.new.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/requisitions#views/requisitionApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requisitions.search.lower.level' | translate}}</span></a></li> -->
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/new/{{'uri://registries/requisitions#views/peopleRegistrationApplicant'|xpsuiuriescape}}"><span>{{'menu.requisitions.new.registration.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/search/{{'uri://registries/requisitions#views/peopleRegistrationApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requisitions.search.registration.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/new/{{'uri://registries/requisitions#views/dataChangeApplicant'|xpsuiuriescape}}"><span>{{'menu.requisitions.new.change.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/search/{{'uri://registries/requisitions#views/dataChangeApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requisitions.search.change.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/new/{{'uri://registries/requisitions#views/transferApplicant'|xpsuiuriescape}}"><span>{{'menu.requisitions.new.transfer.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requisitions - write - KM'])"><a href="#/registry/search/{{'uri://registries/requisitions#views/transferApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requisitions.search.transfer.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.my.profile.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['System User'])"><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.my.profile.title' | translate}}</span></a>
 		<ul>
 			<li><a href="#/personal-page"><span>{{'menu.profile.lower.level' | translate}}</span></a></li>
 			<li><a href="#/dashboard"><span>{{'menu.dashboard.lower.level' | translate}}</span></a></li>
 			<li><a href="#/personal-change-password"><span>{{'menu.change.password.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-lock fa-2x"></i><span>{{'menu.permissions.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])" ><a href="#" class="x-submenu-toggle"><i class="icon-lock fa-2x"></i><span>{{'menu.permissions.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/registry/new/{{'uri://registries/security#groupmaster'|xpsuiuriescape}}"><span>{{'menu.new.group.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/new/{{'uri://registries/security#groupmaster'|xpsuiuriescape}}"><span>{{'menu.new.group.lower.level' | translate}}</span></a></li>
 			<li><a href="#/security/group/edit/"><span>{{'menu.permission.groups.lower.level' | translate}}</span></a></li>
 			<li><a href="#/security/user/edit"><span>{{'menu.user.permissions.lower.level' | translate}}</span></a></li>
-			<li><a href="#/registry/new/{{'uri://registries/security#profilesmaster'|xpsuiuriescape}}"><span>{{'menu.new.profile.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/new/{{'uri://registries/security#profilesmaster'|xpsuiuriescape}}"><span>{{'menu.new.profile.lower.level' | translate}}</span></a></li>
 			<li><a href="#/security/profile/edit"><span>{{'menu.profiles.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-bar-chart fa-2x"></i><span>{{'menu.statistics.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['Registry - read'])" ><a href="#" class="x-submenu-toggle"><i class="icon-bar-chart fa-2x"></i><span>{{'menu.statistics.title' | translate}}</span></a>
 		<ul>
 			<li><a href="#/statistics"><span>{{'menu.statistics.show.title' | translate}}</span></a></li>
 		</ul>
 	</li>
-	<li><a href="#" class="x-submenu-toggle"><i class="icon-info-circle fa-2x"></i><span>{{'menu.schemas.title' | translate}}</span></a>
+	<li ng-show="hasPermissions(['System Admin'])" ng-show="hasPermissions(['System Admin'])" ><a href="#" class="x-submenu-toggle"><i class="icon-info-circle fa-2x"></i><span>{{'menu.schemas.title' | translate}}</span></a>
 		<ul>
 			<li><a href="#/schema/edit"><span>{{'menu.schema.list.lower.level' | translate}}</span></a></li>
+		</ul>
+	</li>
+
+	<li ng-show="hasPermissions(['Portal - write'])" ><a href="#" class="x-submenu-toggle"><i class="icon-info-circle fa-2x"></i><span>Web Portál</span></a>
+		<ul>
+			<li><a href="#/portal/edit"><span>Editovať</span></a></li>
+			<li><a href="#/portal/menu"><span>Menu</span></a></li>
 		</ul>
 	</li>
 </ul>
