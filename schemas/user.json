@@ -6,25 +6,26 @@
 			"type": "string"
 		},
 		"club": {
-			"objectLink": {
+			"objectLink2": {
 				"name": "name",
 				"city": "address.city"
 			}
 		},
 		"employer": {
-			"objectLink": {
+			"objectLink2": {
 				"name": "employer.name",
 				"type": "employer.type"
 			}
 		},
 		"organization": {
-			"objectLink": {
-				"$registry": "organizations"
+			"objectLink2": {
+				"registry": "organizations",
+				"name": "organization.name"
 			}
 		},
 		"school": {
-			"objectLink": {
-				"$registry": "schools",
+			"objectLink2": {
+				"registry": "schools",
 				"name": "organization.name"
 			}
 		}

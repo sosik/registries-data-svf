@@ -416,6 +416,50 @@
 				}
 			}
 		},
+		"club-km":{
+			"table": "organizations",
+			"title":"Klub",
+			"transCode":"schema.club.title",
+			"security": {
+				"create": {
+					"static": [
+						"Club - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Club - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Club - write - KM"
+					]
+				}
+			},
+			"forcedCriteria": [
+				{
+					"f": "club",
+					"op": "ex",
+					"v": ""
+				}
+			],
+			"fireEvents":{
+				"create": "event-agecategory-created",
+				"update": "event-agecategory-updated"
+			},
+			"properties":{
+				"club":{
+					"$ref":"uri://registries/organizations#blocks/club"
+				},
+				"logoInfo":{
+					"$ref":"uri://registries/organizations#blocks/logoInfo"
+				},
+				"clubAdress":{
+					"$ref":"uri://registries/organizations#blocks/clubAdress"
+				}
+			}
+		},
 		"company": {
 			"table": "organizations",
 			"title": "Organizácia",
@@ -535,46 +579,112 @@
 				},
 				"listFields": [
 					{
-						"field": "club.codeOfClub",
-						"title": "Klub ID",
-						"transCode": "schema.org.club.codeOfClub"
-					},
-					{
 						"field": "club.name",
 						"title": "Názov klubu",
 						"transCode": "schema.org.club.name"
+					},
+					{
+						"field": "club.association",
+						"title": "Zväz",
+						"transCode": "schema.org.club.association"
+					},
+					{
+						"field": "clubAdress.city",
+						"title": "Mesto",
+						"transCode": "schema.towns.town"
+					},
+					{
+						"field": "club.stateOfClub",
+						"title": "Stav klubu",
+						"transCode": "schema.org.club.stateOfClub"
+					},
+					{
+						"field": "club.notPaying",
+						"title": "Neplatič",
+						"transCode": "schema.org.club.notPaying"
 					}
 				]
 			}
 		},
-		"company": {
-			"new": {
-				"extends": "uri://registries/organizations#models/company"
+		"club-km":{
+			"new":{
+				"$ref":"uri://registries/organizations#views/club-km/view"
 			},
-			"view": {
-				"extends": "uri://registries/organizations#models/company"
+			"view":{
+				"extends":"uri://registries/organizations#models/club-km",
+				"properties": {
+					"club": {
+						"properties": {
+							"codeOfClub": {
+								"readOnly": true
+							},
+							"name": {
+								"readOnly": true
+							},
+							"association": {
+								"readOnly": true
+							},
+							"ico": {
+								"readOnly": true
+							},
+							"startDate": {
+								"readOnly": true
+							},
+							"stadium": {
+								"readOnly": true
+							},
+							"stateOfClub": {
+								"readOnly": true
+							},
+							"notPaying": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							}
+						}
+					}
+				}
 			},
-			"search": {
-				"extends": "uri://registries/organizations#models/company",
+			"search":{
+				"extends":"uri://registries/organizations#models/club-km",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fcompany/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fclub-km/{{model.id}}"
 						}
 					}
 				],
+				"properties":{
+					"logoInfo": null
+				},
 				"listFields": [
-					{
-						"field": "club.codeOfClub",
-						"title": "Klub ID",
-						"transCode": "schema.org.club.codeOfClub"
-					},
 					{
 						"field": "club.name",
 						"title": "Názov klubu",
 						"transCode": "schema.org.club.name"
+					},
+					{
+						"field": "club.association",
+						"title": "Zväz",
+						"transCode": "schema.org.club.association"
+					},
+					{
+						"field": "clubAdress.city",
+						"title": "Mesto",
+						"transCode": "schema.towns.town"
+					},
+					{
+						"field": "club.stateOfClub",
+						"title": "Stav klubu",
+						"transCode": "schema.org.club.stateOfClub"
+					},
+					{
+						"field": "club.notPaying",
+						"title": "Neplatič",
+						"transCode": "schema.org.club.notPaying"
 					}
 				]
 			}
@@ -605,6 +715,21 @@
 						"field": "association.associationName",
 						"title": "Názov zväzu",
 						"transCode": "schema.org.assoc.associationName"
+					},
+					{
+						"field": "associationAdress.city",
+						"title": "Mesto",
+						"transCode": "schema.towns.town"
+					},
+					{
+						"field": "association.stateOfAssociation",
+						"title": "Stav zväzu",
+						"transCode": "schema.org.assoc.stateOfAssociation"
+					},
+					{
+						"field": "association.notPaying",
+						"title": "Neplatič",
+						"transCode": "schema.org.assoc.notPaying"
 					}
 				]
 			}

@@ -153,17 +153,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Security - write"
+						"Registry - write"
 					]
 				},
 				"read": {
 					"static": [
-						"Security - read"
+						"Registry - read"
 					]
 				},
 				"modify": {
 					"static": [
-						"Security - write"
+						"Registry - write"
 					]
 				}
 			},
@@ -202,6 +202,11 @@
 						"field": "baseData.typeOfTransfer",
 						"title": "Typ zmeny",
 						"transCode": "schema.transfer.typeOfTransfer"
+					},
+					{
+						"field": "baseData.dateOfRealization",
+						"title": "Dátum realizácie",
+						"transCode": "schema.transfer.dateOfRealization"
 					},
 					{
 						"field": "baseData.player",

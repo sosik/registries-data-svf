@@ -1,4 +1,4 @@
-{
+ 	{
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/security",
 	"type": "object",
@@ -16,6 +16,72 @@
 				"type": "boolean",
 				"default": true
 			},
+
+
+			"Registry People": {
+				"title": "Zobrazenie registru Osoby",
+				"type": "boolean",
+				"default": true
+			},
+			"Registry Club": {
+				"title": "Zobrazenie registru Cluby",
+				"type": "boolean",
+				"default": true
+			},
+			"Registry Requisitions": {
+				"title": "Zobrazenie registru Žiadosti",
+				"type": "boolean",
+				"default": true
+			},
+			"Registry Competitions": {
+				"title": "Zobrazenie registru Súťaže",
+				"type": "boolean",
+				"default": true
+			},
+
+
+			"RefereeReport - read - KM": {
+				"title": "Zobrazenie dát Zapisu rozhodcu",
+				"type": "boolean",
+				"default": true
+			},
+			"RefereeReport - write - KM": {
+				"title": "Modifikácia dát Zapisu rozhodcu",
+				"type": "boolean",
+				"default": true
+			},
+			"Club - read - KM": {
+				"title": "Zobrazenie dát klubu",
+				"type": "boolean",
+				"default": true
+			},
+			"Club - write - KM": {
+				"title": "Modifikácia dát klubu",
+				"type": "boolean",
+				"default": true
+			},
+			"Person - read - KM": {
+				"title": "Zobrazenie dát osob",
+				"type": "boolean",
+				"default": true
+			},
+			"Person - write - KM": {
+				"title": "Modifikácia dát osob",
+				"type": "boolean",
+				"default": true
+			},
+			"Requisitions - read - KM": {
+				"title": "Zobrazenie dát žiadosti",
+				"type": "boolean",
+				"default": true
+			},
+			"Requisitions - write - KM": {
+				"title": "Modifikácia dát žiadosti",
+				"type": "boolean",
+				"default": true
+			},
+
+
 			"Registry - read": {
 				"title": "Zobrazenie dát registrov",
 				"type": "boolean",
@@ -33,6 +99,11 @@
 			},
 			"Security - write": {
 				"title": "Modifikácia dát zabezpečenia",
+				"type": "boolean",
+				"default": true
+			},
+			"Portal - write": {
+				"title": "Modifikácia portalu",
 				"type": "boolean",
 				"default": true
 			}
