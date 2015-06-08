@@ -36,17 +36,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Security - write"
+						"Registry - write"
 					]
 				},
 				"read": {
 					"static": [
-						"Security - read"
+						"Registry - read"
 					]
 				},
 				"modify": {
 					"static": [
-						"Security - write"
+						"Registry - write"
 					]
 				}
 			},
@@ -79,8 +79,18 @@
 				"listFields": [
 					{
 						"field": "baseData.name",
-						"title": "Názov",
-						"transCode":"schema.season.name"
+						"title": "Súťažný ročník",
+						"transCode": "schema.season.name"
+					},
+					{
+						"field": "baseData.startSeason",
+						"title": "Začiatok",
+						"transCode": "schema.season.startSeason"
+					},
+					{
+						"field": "baseData.endSeason",
+						"title": "Koniec",
+						"transCode": "schema.season.endSeason"
 					}
 				]
 			}

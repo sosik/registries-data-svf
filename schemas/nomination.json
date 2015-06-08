@@ -1,0 +1,259 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/nominations#",
+	"blocks":{
+		"baseData": {
+			"title": "Základné informácie",
+			"transCode": "schema.nomination.baseData",
+			"type": "object",
+			"properties": {
+				"match": {
+					"title": "Stretnutie",
+					"transCode": "schema.nomination.match",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/refereeReports#views/refereeReports/view",
+						"fields":{
+							"homeClub": "baseData.homeClub",
+							"awayClub": "baseData.awayClub",
+							"matchDate": "baseData.matchDate"
+						}
+					}
+				},
+				"club": {
+					"title": "Klub",
+					"transCode": "schema.nomination.club",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/organizations#views/club/view",
+						"fields":{
+							"club": "club.name"
+						}
+					}
+				}
+			}
+		},
+		"officers": {
+			"title": "Funkcionári",
+			"transCode": "schema.nomination.officers",
+			"type": "object",
+			"properties": {
+				"coach": {
+					"title": "Tréner",
+					"transCode": "schema.nomination.coach",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/coach/view",
+						"fields":{
+							"surName": "baseData.surName",
+							"firstName": "baseData.name",
+							"license": "coach.coachLicense",
+							"licenseType": "coach.coachLicenseType"
+						}
+					},
+					"objectLinkForcedCriteria": [
+						{
+							"f": "coach.isCoach",
+							"op": "eq",
+							"v": "TRUE"
+						}
+					]
+				},
+				"aCoach1": {
+					"title": "Asistent Trénera",
+					"transCode": "schema.nomination.aCoach1",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/coach/view",
+						"fields":{
+							"surName": "baseData.surName",
+							"firstName": "baseData.name",
+							"license": "coach.coachLicense",
+							"licenseType": "coach.coachLicenseType"
+						}
+					},
+					"objectLinkForcedCriteria": [
+						{
+							"f": "coach.isCoach",
+							"op": "eq",
+							"v": "TRUE"
+						}
+					]
+				},
+				"aCoach2": {
+					"title": "Asistent Trénera",
+					"transCode": "schema.nomination.aCoach2",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/coach/view",
+						"fields":{
+							"surName": "baseData.surName",
+							"firstName": "baseData.name",
+							"license": "coach.coachLicense",
+							"licenseType": "coach.coachLicenseType"
+						}
+					},
+					"objectLinkForcedCriteria": [
+						{
+							"f": "coach.isCoach",
+							"op": "eq",
+							"v": "TRUE"
+						}
+					]
+				},
+				"officer1": {
+					"title": "Funkcionár",
+					"transCode": "schema.nomination.officer1",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/officer/view",
+						"fields":{
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					},
+					"objectLinkForcedCriteria": [
+						{
+							"f": "officer.isOfficer",
+							"op": "eq",
+							"v": "TRUE"
+						}
+					]
+				},
+				"officer2": {
+					"title": "Funkcionár",
+					"transCode": "schema.nomination.officer2",
+					"type": "object",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/officer/view",
+						"fields":{
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					},
+					"objectLinkForcedCriteria": [
+						{
+							"f": "officer.isOfficer",
+							"op": "eq",
+							"v": "TRUE"
+						}
+					]
+				}
+			}
+		},
+		"listOfPlayers": {
+			"title": "Nominácia hráčov",
+			"transCode": "schema.nomination.listOfPlayers",
+			"type": "object",
+			"render": {
+				"width": "full"
+			},
+			"properties": {
+				"players": {
+					"title": "Hráči",
+					"transCode": "schema.nomination.players",
+					"type": "array",
+					"items": {
+						"objectLink2": {
+							"schema": "uri://registries/people#views/player/view",
+							"fields": {
+								"surName": "baseData.surName",
+								"firstName": "baseData.name",
+								"birthDate": "baseData.birthDate",
+								"playerLicense": "player.playerLicense"
+							}
+						},
+						"required": true
+					}
+				},
+				"state": {
+					"title": "Stav",
+					"transCode": "schema.nomination.state",
+					"type": "string",
+					"required": true,
+					"enum": [
+						"Otvorený",
+						"Zatvorený"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				}
+			}
+		}
+	},
+
+	"models": {
+		"nominations": {
+			"title": "Nominácia",
+			"transCode": "schema.nomination.title",
+			"table": "nominations",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
+			"properties": {
+				"baseData":{
+					"extends":"uri://registries/nominations#blocks/baseData"
+				},
+				"officers": {
+					"extends":"uri://registries/nominations#blocks/officers"
+				},
+				"listOfPlayers":{
+					"extends":"uri://registries/nominations#blocks/listOfPlayers"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"nominations": {
+			"new": {
+				"extends":"uri://registries/nominations#models/nominations"
+			},
+			"view": {
+				"extends":"uri://registries/nominations#models/nominations"
+			},
+			"search": {
+				"extends":"uri://registries/nominations#models/nominations",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fnominations~23views~2Fnominations/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.match",
+						"title": "Stretnutie",
+						"transCode": "schema.nomination.match"
+					},
+					{
+						"field": "baseData.club",
+						"title": "Klub",
+						"transCode": "schema.nomination.club"
+					}
+				]
+			}
+		}
+	}
+}

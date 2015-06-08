@@ -1,0 +1,112 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/schedule#",
+	"blocks": {
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode": "schema.schedule.baseData",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Názov",
+					"transCode": "schema.schedule.baseData.name",
+					"type": "string",
+					"required": true
+				},
+				"competitionPart": {
+					"title": "Časť súťaže",
+					"transCode": "schema.schedule.baseData.competitionPart",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/competitionPart#views/competitionPart/view",
+						"fields":{
+							"name": "baseData.name"
+						}
+					}
+				},
+				"date": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Dátum",
+					"transCode": "schema.schedule.baseData.date",
+					"required": true
+				}
+			}
+		}
+	},
+
+	"models": {
+		"schedule": {
+			"title": "Termín stretnutia",
+			"transCode": "schema.schedule.title",
+			"table": "schedules",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
+			"properties":{
+				"baseData":{
+					"extends":"uri://registries/schedule#blocks/baseData"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"schedule": {
+			"new": {
+				"extends":"uri://registries/schedule#models/schedule"
+			},
+			"view": {
+				"extends":"uri://registries/schedule#models/schedule"
+			},
+			"search": {
+				"extends":"uri://registries/schedule#models/schedule",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fschedule~23views~2Fschedule/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.name",
+						"title": "Názov termínu",
+						"transCode": "schema.schedule.baseData.name"
+					},
+					{
+						"field": "baseData.competitionPart",
+						"title": "Súťaž",
+						"transCode": "schema.schedule.listFields.competition"
+					},
+					{
+						"field": "baseData.competitionPart",
+						"title": "Názov časti súťaže",
+						"transCode": "schema.schedule.baseData.competitionPart"
+					},
+					{
+						"field": "baseData.date",
+						"title": "Dátum",
+						"transCode": "schema.schedule.baseData.date"
+					}
+				]
+			}
+		}
+	}
+}

@@ -18,5 +18,10 @@
 	"teams.json",
 	"towns.json",
 	"transfers.json",
-	"userSecurity.json"
+	"userSecurity.json",
+	"refereeReport.json",
+	"requisitions.json",
+	"schedule.json",
+	"nomination.json",
+	"competitionPart.json"
 ]
