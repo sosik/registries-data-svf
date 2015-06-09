@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/schema#",
-	"id": "uri://registries/user#security",
+	"id": "uri://registries/userSecurity#",
 	"new": {
 		"extends":"uri://registries/people#models/person",
 		"title": "Nový člen",
