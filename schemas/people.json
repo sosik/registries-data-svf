@@ -951,6 +951,23 @@
 			"extends":"uri://registries/people#models/person",
 			"title":"Môj profil",
 			"transCode":"schema.people.personalProfile",
+			"security": {
+				"create": {
+					"static": [
+						"System User"
+					]
+				},
+				"read": {
+					"static": [
+						"System User"
+					]
+				},
+				"modify": {
+					"static": [
+						"System User"
+					]
+				}
+			},
 			"properties":{
 				"photoInfo":{
 					"$ref":"uri://registries/people#blocks/photoInfo"

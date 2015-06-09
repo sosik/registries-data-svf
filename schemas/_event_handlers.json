@@ -8,5 +8,10 @@
 		"name": "processing-error-handler",
 		"file": "data/js/event-handlers/processing-error-handler.js",
 		"enabled": true
+	},
+	{
+		"name": "requisition-modified-handler",
+		"file": "data/js/event-handlers/requisition-modified.js",
+		"enabled": true
 	}
 ]

@@ -84,7 +84,7 @@
 	<li ng-show="hasPermissions(['System User'])"><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.my.profile.title' | translate}}</span></a>
 		<ul>
 			<li><a href="#/personal-page"><span>{{'menu.profile.lower.level' | translate}}</span></a></li>
-			<li><a href="#/dashboard"><span>{{'menu.dashboard.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/dashboard"><span>{{'menu.dashboard.lower.level' | translate}}</span></a></li>
 			<li><a href="#/personal-change-password"><span>{{'menu.change.password.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
