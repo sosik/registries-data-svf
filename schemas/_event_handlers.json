@@ -10,8 +10,8 @@
 		"enabled": true
 	},
 	{
-		"name": "requisition-modified-handler",
-		"file": "data/js/event-handlers/requisition-modified.js",
+		"name": "request-modified-handler",
+		"file": "data/js/event-handlers/request-modified.js",
 		"enabled": true
 	}
 ]

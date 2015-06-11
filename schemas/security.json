@@ -28,7 +28,7 @@
 				"type": "boolean",
 				"default": true
 			},
-			"Registry Requisitions": {
+			"Registry Requests": {
 				"title": "Zobrazenie registru Žiadosti",
 				"type": "boolean",
 				"default": true
@@ -70,12 +70,12 @@
 				"type": "boolean",
 				"default": true
 			},
-			"Requisitions - read - KM": {
+			"Requests - read - KM": {
 				"title": "Zobrazenie dát žiadosti",
 				"type": "boolean",
 				"default": true
 			},
-			"Requisitions - write - KM": {
+			"Requests - write - KM": {
 				"title": "Modifikácia dát žiadosti",
 				"type": "boolean",
 				"default": true

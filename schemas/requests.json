@@ -1,14 +1,14 @@
 {
 	"$schema": "http://json-schema.org/schema#",
-	"id": "uri://registries/requisitions#",
+	"id": "uri://registries/requests#",
 	"blocks": {
 		"attachments": {
 			"type": "object",
-			"transCode": "schema.requisitions.attachments",
+			"transCode": "schema.requests.attachments",
 			"properties": {
 				"attachments": {
 					"title": "Prílohy",
-					"transCode": "schema.requisitions.attachments",
+					"transCode": "schema.requests.attachments",
 					"type": "array",
 					"items": {
 						"file": {
@@ -37,11 +37,11 @@
 		},
 		"baseData": {
 			"title": "ZÁKLADNÍ INFORMACE",
-			"transCode": "schema.requisitions.basedata",
+			"transCode": "schema.requests.basedata",
 			"type": "object",
 			"properties": {
 				"applicant": {
-					"transCode": "schema.requisitions.basedata.applicant",
+					"transCode": "schema.requests.basedata.applicant",
 					"type": "object",
 					"required": true,
 					"objectLink2": {
@@ -53,7 +53,7 @@
 					}
 				},
 				"clubApplicant": {
-					"transCode": "schema.requisitions.basedata.clubApplicant",
+					"transCode": "schema.requests.basedata.clubApplicant",
 					"type": "object",
 					"required": true,
 					"objectLink2": {
@@ -64,7 +64,7 @@
 					}
 				},
 				"assignedTo": {
-					"transCode": "schema.requisitions.basedata.assignedto",
+					"transCode": "schema.requests.basedata.assignedto",
 					"type": "object",
 					"objectLink2": {
 						"schema": "uri://registries/people#views/fullperson/view",
@@ -75,12 +75,12 @@
 					}
 				},
 				"subject": {
-					"transCode": "schema.requisitions.basedata.subject",
+					"transCode": "schema.requests.basedata.subject",
 					"type": "string",
 					"required": true
 				},
 				"text": {
-					"transCode": "schema.requisitions.basedata.text",
+					"transCode": "schema.requests.basedata.text",
 					"type": "string",
 					"required": true,
 					"render": {
@@ -88,7 +88,7 @@
 					}
 				},
 				"responseText": {
-					"transCode": "schema.requisitions.basedata.responsetext",
+					"transCode": "schema.requests.basedata.responsetext",
 					"type": "string",
 					"render": {
 						"component": "psui-textarea"
@@ -96,11 +96,11 @@
 				},
 				"setupDate": {
 					"extends": "uri://registries/commontypes#blocks/date",
-					"transCode": "schema.requisitions.basedata.setupdate",
+					"transCode": "schema.requests.basedata.setupdate",
 					"required": true
 				},
 				"status": {
-					"transCode": "schema.requisitions.basedata.status",
+					"transCode": "schema.requests.basedata.status",
 					"type": "string",
 					"enum": [
 						"created",
@@ -108,9 +108,9 @@
 						"closed"
 					],
 					"enumTransCodes": [
-						"schema.requisitions.basedata.status.created",
-						"schema.requisitions.basedata.status.processing",
-						"schema.requisitions.basedata.status.closed"
+						"schema.requests.basedata.status.created",
+						"schema.requests.basedata.status.processing",
+						"schema.requests.basedata.status.closed"
 					],
 					"render": {
 						"component": "psui-selectbox",
@@ -118,7 +118,7 @@
 					}
 				},
 				"modifiedOn": {
-					"transCode": "schema.requisitions.basedata.modifiedOn",
+					"transCode": "schema.requests.basedata.modifiedOn",
 					"timestamp": true,
 					"readOnly": true
 				}
@@ -266,10 +266,10 @@
 	},
 
 	"models": {
-		"requisition": {
+		"request": {
 			"title": "Žiadosť",
-			"transCode": "schema.requisitions.title",
-			"table": "requisitions",
+			"transCode": "schema.requests.title",
+			"table": "requests",
 			"security": {
 				"create": {
 					"static": [
@@ -288,15 +288,15 @@
 				}
 			},
 			"fireEvents": {
-				"create": "event-requisition-created",
-				"update": "event-requisition-updated"
+				"create": "event-request-created",
+				"update": "event-request-updated"
 			},
 			"properties": {
 				"baseData": {
-					"$ref": "uri://registries/requisitions#blocks/baseData"
+					"$ref": "uri://registries/requests#blocks/baseData"
 				},
 				"attachments": {
-					"$ref": "uri://registries/requisitions#blocks/attachments"
+					"$ref": "uri://registries/requests#blocks/attachments"
 				}
 			}
 		},
@@ -304,7 +304,7 @@
 			"extends": "uri://registries/people#models/person",
 			"title": "Registrácia osoby",
 			"xxtransCode": "schema.people.title",
-			"table": "requisitions",
+			"table": "requests",
 			"security": {
 				"create": {
 					"static": [
@@ -323,8 +323,8 @@
 				}
 			},
 			"fireEvents": {
-				"create": "event-requisition-created",
-				"update": "event-requisition-updated"
+				"create": "event-request-created",
+				"update": "event-request-updated"
 			},
 			"forcedCriteria": [
 				{
@@ -341,8 +341,8 @@
 						}
 					}
 				},
-				"requisitionData": {
-					"$ref": "uri://registries/requisitions#blocks/baseData"
+				"requestData": {
+					"$ref": "uri://registries/requests#blocks/baseData"
 				},
 				"player": {
 					"extends": "uri://registries/people#blocks/player",
@@ -399,7 +399,7 @@
 					}
 				},
 				"attachments": {
-					"$ref": "uri://registries/requisitions#blocks/attachments"
+					"$ref": "uri://registries/requests#blocks/attachments"
 				}
 			}
 		},
@@ -407,7 +407,7 @@
 			"extends": "uri://registries/people#models/fullperson-km",
 			"title": "Zmena údajov",
 			"xxtransCode": "schema.people.title",
-			"table": "requisitions",
+			"table": "requests",
 			"security": {
 				"create": {
 					"static": [
@@ -426,8 +426,8 @@
 				}
 			},
 			"fireEvents": {
-				"create": "event-requisition-created",
-				"update": "event-requisition-updated"
+				"create": "event-request-created",
+				"update": "event-request-updated"
 			},
 			"forcedCriteria": [
 				{
@@ -438,10 +438,10 @@
 			],
 			"properties": {
 				"peopleObjLink": {
-					"$ref": "uri://registries/requisitions#blocks/peopleObjLink"
+					"$ref": "uri://registries/requests#blocks/peopleObjLink"
 				},
-				"requisitionData": {
-					"$ref": "uri://registries/requisitions#blocks/baseData"
+				"requestData": {
+					"$ref": "uri://registries/requests#blocks/baseData"
 				},
 				"player": {
 					"extends": "uri://registries/people#blocks/player"
@@ -478,12 +478,12 @@
 					}
 				},
 				"attachments": {
-					"$ref": "uri://registries/requisitions#blocks/attachments"
+					"$ref": "uri://registries/requests#blocks/attachments"
 				}
 			}
 		},
 		"transfer": {
-			"table": "requisitions",
+			"table": "requests",
 			"title": "Zmena kl. príslušnosti",
 			"transCode": "schema.transfer.title",
 			"security": {
@@ -504,8 +504,8 @@
 				}
 			},
 			"fireEvents": {
-				"create": "event-requisition-created",
-				"update": "event-requisition-updated"
+				"create": "event-request-created",
+				"update": "event-request-updated"
 			},
 			"forcedCriteria": [
 				{
@@ -516,68 +516,68 @@
 			],
 			"properties": {
 				"transferData": {
-					"$ref": "uri://registries/requisitions#blocks/transfer"
+					"$ref": "uri://registries/requests#blocks/transfer"
 				},				
 				"attachments": {
-					"$ref": "uri://registries/requisitions#blocks/attachments"
+					"$ref": "uri://registries/requests#blocks/attachments"
 				},
-				"requisitionData": {
-					"$ref": "uri://registries/requisitions#blocks/baseData"
+				"requestData": {
+					"$ref": "uri://registries/requests#blocks/baseData"
 				}
 			}
 		}
 	},
 
 	"views": {
-		"requisition": {
+		"request": {
 			"new": {
-				"extends": "uri://registries/requisitions#models/requisition",
-				"saveBySchema": "uri://registries/requisitions#views/requisition/view"
+				"extends": "uri://registries/requests#models/request",
+				"saveBySchema": "uri://registries/requests#views/request/view"
 			},
 			"view": {
-				"$ref": "uri://registries/requisitions#models/requisition"
+				"$ref": "uri://registries/requests#models/request"
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#models/requisition",
+				"extends": "uri://registries/requests#models/request",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2Frequisition/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2Frequest/{{model.id}}"
 						}
 					}
 				],
 				"listFields": [
 					{
 						"field": "baseData.setupDate",
-						"transCode": "schema.requisitions.basedata.setupdate"
+						"transCode": "schema.requests.basedata.setupdate"
 					},
 					{
 						"field": "baseData.subject",
-						"transCode": "schema.requisitions.basedata.subject"
+						"transCode": "schema.requests.basedata.subject"
 					},
 					{
 						"field": "baseData.applicant",
-						"transCode": "schema.requisitions.basedata.applicant"
+						"transCode": "schema.requests.basedata.applicant"
 					},
 					{
 						"field": "baseData.assignedTo",
-						"transCode": "schema.requisitions.basedata.assignedto"
+						"transCode": "schema.requests.basedata.assignedto"
 					},
 					{
 						"field": "baseData.modifiedOn",
-						"transCode": "schema.requisitions.basedata.modifiedOn"
+						"transCode": "schema.requests.basedata.modifiedOn"
 					},
 					{
 						"field": "baseData.status",
-						"transCode": "schema.requisitions.basedata.status"
+						"transCode": "schema.requests.basedata.status"
 					}
 				]
 			}
 		},
-		"requisitionApplicant": {
-			"extends": "uri://registries/requisitions#views/requisition",
+		"requestApplicant": {
+			"extends": "uri://registries/requests#views/request",
 			"new": {
 				"properties": {
 					"baseData": {
@@ -623,20 +623,20 @@
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#views/requisition/search",
+				"extends": "uri://registries/requests#views/request/search",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FrequisitionApplicant/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FrequestApplicant/{{model.id}}"
 						}
 					}
 				]
 			}
 		},
-		"requisitionSolver": {
-			"extends": "uri://registries/requisitions#views/requisition",
+		"requestSolver": {
+			"extends": "uri://registries/requests#views/request",
 			"new": null,
 			"view": {
 				"properties": {
@@ -677,7 +677,7 @@
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FrequisitionSolver/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FrequestSolver/{{model.id}}"
 						}
 					}
 				]
@@ -685,17 +685,17 @@
 		},
 		"peopleRegistrationApplicant": {
 			"new": {
-				"$ref": "uri://registries/requisitions#views/peopleRegistrationApplicant/view"
+				"$ref": "uri://registries/requests#views/peopleRegistrationApplicant/view"
 			},
 			"view": {
-				"extends": "uri://registries/requisitions#models/peopleRegistration",
+				"extends": "uri://registries/requests#models/peopleRegistration",
 				"properties": {
 					"baseData": {
 						"properties": {
 							"registrationID": null
 						}
 					},
-					"requisitionData": null,
+					"requestData": null,
 					"player": {
 						"properties": {
 							"expirationOfProffesionalContract": null,
@@ -722,13 +722,13 @@
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#models/peopleRegistration",
+				"extends": "uri://registries/requests#models/peopleRegistration",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FpeopleRegistrationApplicant/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FpeopleRegistrationApplicant/{{model.id}}"
 						}
 					}
 				],
@@ -752,31 +752,31 @@
 						"transCode": "schema.people.birthDate"
 					},
 					{
-						"field": "requisitionData.clubApplicant",
+						"field": "requestData.clubApplicant",
 						"title": "Klub",
-						"transCode": "schema.requisitions.basedata.clubApplicant"
+						"transCode": "schema.requests.basedata.clubApplicant"
 					},
 					{
-						"field": "requisitionData.applicant",
-						"transCode": "schema.requisitions.basedata.applicant"
+						"field": "requestData.applicant",
+						"transCode": "schema.requests.basedata.applicant"
 					},
 					{
-						"field": "requisitionData.status",
-						"transCode": "schema.requisitions.basedata.status"
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
 					}
 				]
 			}
 		},
 		"peopleRegistrationSolver": {
-			"extends": "uri://registries/requisitions#models/peopleRegistration",
+			"extends": "uri://registries/requests#models/peopleRegistration",
 			"new": null,
 			"view": {
-				"extends": "uri://registries/requisitions#views/peopleRegistrationApplicant/view",
+				"extends": "uri://registries/requests#views/peopleRegistrationApplicant/view",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "action-link",
 						"title": "Vytvoriť člena",
-						"schema": "uri://registries/requisitions#views/peopleRegistrationApplicant",
+						"schema": "uri://registries/requests#views/peopleRegistrationApplicant",
 						"template": "createMember.html"
 					}
 				],
@@ -809,8 +809,8 @@
 							}
 						}
 					},
-					"requisitionData": {
-						"extends": "uri://registries/requisitions#blocks/baseData",
+					"requestData": {
+						"extends": "uri://registries/requests#blocks/baseData",
 						"properties":{
 							"subject": null,
 							"text": null,
@@ -820,14 +820,14 @@
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#views/peopleRegistrationApplicant/search",
+				"extends": "uri://registries/requests#views/peopleRegistrationApplicant/search",
 				"title": "Registrácia osoby",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FpeopleRegistrationSolver/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FpeopleRegistrationSolver/{{model.id}}"
 						}
 					}
 				]
@@ -837,7 +837,7 @@
 			"new" : {
 				"title": "Zmena údajov",
 				"xxtransCode": "schema.people.title",
-				"table": "requisitions",
+				"table": "requests",
 				"security": {
 					"create": {
 						"static": [
@@ -856,8 +856,8 @@
 					}
 				},
 				"fireEvents": {
-					"create": "event-requisition-created",
-					"update": "event-requisition-updated"
+					"create": "event-request-created",
+					"update": "event-request-updated"
 				},
 				"forcedCriteria": [
 					{
@@ -868,7 +868,7 @@
 				],
 				"properties" : {
 					"peopleObjLink": {
-						"$ref": "uri://registries/requisitions#blocks/peopleObjLink"
+						"$ref": "uri://registries/requests#blocks/peopleObjLink"
 					},
 					"baseData": {
 						"type": "object",
@@ -1084,10 +1084,10 @@
 						}
 					},
 					"attachments": {
-						"$ref": "uri://registries/requisitions#blocks/attachments"
+						"$ref": "uri://registries/requests#blocks/attachments"
 					},
-					"requisitionData": {
-						"extends": "uri://registries/requisitions#blocks/baseData",
+					"requestData": {
+						"extends": "uri://registries/requests#blocks/baseData",
 						"properties":{
 							"subject": null,
 							"text": null,
@@ -1114,7 +1114,7 @@
 			"view" : {
 				"title": "Zmena údajov",
 				"xxtransCode": "schema.people.title",
-				"table": "requisitions",
+				"table": "requests",
 				"security": {
 					"create": {
 						"static": [
@@ -1133,8 +1133,8 @@
 					}
 				},
 				"fireEvents": {
-					"create": "event-requisition-created",
-					"update": "event-requisition-updated"
+					"create": "event-request-created",
+					"update": "event-request-updated"
 				},
 				"forcedCriteria": [
 					{
@@ -1144,13 +1144,13 @@
 					}
 				],
 				"properties": {
-					"$ref": "uri://registries/requisitions#views/dataChangeApplicant/new/properties"
+					"$ref": "uri://registries/requests#views/dataChangeApplicant/new/properties"
 				}
 			},
 			"search" : {
 				"title": "Zmena údajov",
 				"xxtransCode": "schema.people.title",
-				"table": "requisitions",
+				"table": "requests",
 				"security": {
 					"create": {
 						"static": [
@@ -1169,8 +1169,8 @@
 					}
 				},
 				"fireEvents": {
-					"create": "event-requisition-created",
-					"update": "event-requisition-updated"
+					"create": "event-request-created",
+					"update": "event-request-updated"
 				},
 				"forcedCriteria": [
 					{
@@ -1184,7 +1184,7 @@
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FdataChangeApplicant/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FdataChangeApplicant/{{model.id}}"
 						}
 					}
 				],
@@ -1195,30 +1195,30 @@
 						"transCode": "schema.people.title"
 					},
 					{
-						"field": "requisitionData.applicant",
+						"field": "requestData.applicant",
 						"title": "Žiadateľ",
-						"transCode": "schema.requisitions.basedata.applicant"
+						"transCode": "schema.requests.basedata.applicant"
 					},
 					{
-						"field": "requisitionData.clubApplicant",
+						"field": "requestData.clubApplicant",
 						"title": "Klub",
-						"transCode": "schema.requisitions.basedata.clubApplicant"
+						"transCode": "schema.requests.basedata.clubApplicant"
 					},
 					{
-						"field": "requisitionData.status",
+						"field": "requestData.status",
 						"title": "Stav",
-						"transCode": "schema.requisitions.basedata.status"
+						"transCode": "schema.requests.basedata.status"
 					}
 				],
 				"properties": {
-					"extends": "uri://registries/requisitions#views/dataChangeApplicant/new/properties",
+					"extends": "uri://registries/requests#views/dataChangeApplicant/new/properties",
 					"photoInfo": null
 				}
 			}
 			
 		},
 		"dataChangeSolver": {
-			"extends": "uri://registries/requisitions#views/dataChangeApplicant",
+			"extends": "uri://registries/requests#views/dataChangeApplicant",
 			"new": null,
 			"view": {
 				"properties": {
@@ -1263,8 +1263,8 @@
 							}
 						}
 					},
-					"requisitionData": {
-						"extends": "uri://registries/requisitions#blocks/baseData",
+					"requestData": {
+						"extends": "uri://registries/requests#blocks/baseData",
 						"properties":{
 							"subject": null,
 							"text": null,
@@ -1276,13 +1276,13 @@
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#views/dataChangeApplicant/search",
+				"extends": "uri://registries/requests#views/dataChangeApplicant/search",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FdataChangeSolver/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FdataChangeSolver/{{model.id}}"
 						}
 					}
 				]
@@ -1290,27 +1290,27 @@
 		},
 		"transferApplicant": {
 			"new": {
-				"$ref": "uri://registries/requisitions#views/transferApplicant/view"
+				"$ref": "uri://registries/requests#views/transferApplicant/view"
 			},
 			"view": {
-				"extends": "uri://registries/requisitions#models/transfer",
+				"extends": "uri://registries/requests#models/transfer",
 				"properties": {
 					"transferData": {
 						"properties": {
 							"stateOfTransfer": null
 						}
 					},
-					"requisitionData": null
+					"requestData": null
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#models/transfer",
+				"extends": "uri://registries/requests#models/transfer",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FtransferApplicant/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FtransferApplicant/{{model.id}}"
 						}
 					}
 				],
@@ -1341,26 +1341,26 @@
 						"transCode": "schema.transfer.clubTo"
 					},
 					{
-						"field": "requisitionData.clubApplicant",
+						"field": "requestData.clubApplicant",
 						"title": "Klub",
-						"transCode": "schema.requisitions.basedata.clubApplicant"
+						"transCode": "schema.requests.basedata.clubApplicant"
 					},
 					{
-						"field": "requisitionData.status",
-						"transCode": "schema.requisitions.basedata.status"
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
 					}
 				]
 			}
 		},			
 		"transferSolver": {
-			"extends": "uri://registries/requisitions#views/transferApplicant",
+			"extends": "uri://registries/requests#views/transferApplicant",
 			"new": null,
 			"view": {
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "action-link",
 						"title": "Vytvoriť transfer",
-						"schema": "uri://registries/requisitions#views/transferApplicant",
+						"schema": "uri://registries/requests#views/transferApplicant",
 						"template": "createTransfer.html"
 					}
 				],
@@ -1370,8 +1370,8 @@
 							"stateOfTransfer": null
 						}
 					},
-					"requisitionData": {
-						"extends": "uri://registries/requisitions#blocks/baseData",
+					"requestData": {
+						"extends": "uri://registries/requests#blocks/baseData",
 						"properties":{
 							"subject": null,
 							"text": null,
@@ -1381,13 +1381,13 @@
 				}
 			},
 			"search": {
-				"extends": "uri://registries/requisitions#views/transferApplicant/search",
+				"extends": "uri://registries/requests#views/transferApplicant/search",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FtransferSolver/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FtransferSolver/{{model.id}}"
 						}
 					}
 				]
