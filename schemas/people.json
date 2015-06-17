@@ -1155,6 +1155,15 @@
 			},
 			"search":{
 				"extends":"uri://registries/people#models/fullperson-km",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Ffullperson-km/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo":null
 				},
