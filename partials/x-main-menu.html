@@ -3,7 +3,8 @@
 		<ul>
 			<li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/people#views/fullperson'|xpsuiuriescape}}"><span>{{'menu.new.person.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/fullperson/search'|xpsuiuriescape}}"><span>{{'menu.search.person.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Person - read - KM'])"><a href="#/registry/search/{{'uri://registries/people#views/fullperson-km/search'|xpsuiuriescape}}"><span>Hladať osobu(KM)</span></a></li>
+			<li ng-show="hasPermissions(['Person - read - KM'])"><a href="#/registry/search/{{'uri://registries/people#views/player-km/search'|xpsuiuriescape}}"><span>{{'menu.search.player.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Person - read - KM'])"><a href="#/registry/search/{{'uri://registries/people#views/fullperson-km/search'|xpsuiuriescape}}"><span>{{'menu.search.club.person.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/player/search'|xpsuiuriescape}}"><span>{{'menu.search.player.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/referee/search'|xpsuiuriescape}}"><span>{{'menu.search.referee.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/people#views/coach/search'|xpsuiuriescape}}"><span>{{'menu.search.coach.lower.level' | translate}}</span></a></li>

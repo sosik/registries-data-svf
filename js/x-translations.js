@@ -31,6 +31,7 @@
 			"menu.requests.search.change.lower.level":"Hľadať zmenu údajov",
 			"menu.requests.new.transfer.lower.level":"Žiadosť o transfer",
 			"menu.requests.search.transfer.lower.level":"Hľadať žiadosť o transfer",
+			"menu.search.club.person.lower.level": "Hľadať člena klubu",
 
 			"schema.towns.town":"Obec",
 
@@ -458,6 +459,8 @@
 		});
 		
 		$translateProvider.translations('cz', {
+			"menu.search.club.person.lower.level": "Hľadať člena klubu",
+			
 			"schema.towns.town":"Obec",
 
 			"schema.people.profile.yes":"Áno",
