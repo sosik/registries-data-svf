@@ -1,0 +1,303 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/generalRequests#",
+	"blocks": {
+		"requestData": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.requests.basedata",
+			"type": "object",
+			"properties": {
+				"applicant": {
+					"transCode": "schema.requests.basedata.applicant",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema": "uri://registries/people#views/fullperson/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
+					}
+				},
+				"clubApplicant": {
+					"transCode": "schema.requests.basedata.clubApplicant",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/club/view",
+						"fields": {
+							"name": "club.name"
+						}
+					}
+				},
+				"assignedTo": {
+					"transCode": "schema.requests.basedata.assignedto",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/fullperson/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
+					}
+				},
+				"subject": {
+					"transCode": "schema.requests.basedata.subject",
+					"type": "string",
+					"required": true
+				},
+				"text": {
+					"transCode": "schema.requests.basedata.text",
+					"type": "string",
+					"required": true,
+					"render": {
+						"component": "psui-textarea"
+					}
+				},
+				"responseText": {
+					"transCode": "schema.requests.basedata.responsetext",
+					"type": "string",
+					"render": {
+						"component": "psui-textarea"
+					}
+				},
+				"setupDate": {
+					"extends": "uri://registries/commontypes#blocks/date",
+					"transCode": "schema.requests.basedata.setupdate",
+					"required": true
+				},
+				"status": {
+					"transCode": "schema.requests.basedata.status",
+					"type": "string",
+					"enum": [
+						"created",
+						"processing",
+						"closed"
+					],
+					"enumTransCodes": [
+						"schema.requests.basedata.status.created",
+						"schema.requests.basedata.status.processing",
+						"schema.requests.basedata.status.closed"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"modifiedOn": {
+					"transCode": "schema.requests.basedata.modifiedOn",
+					"timestamp": true,
+					"readOnly": true
+				}
+			}
+		},
+
+		"attachments": {
+			"type": "object",
+			"transCode": "schema.requests.attachments",
+			"properties": {
+				"attachments": {
+					"title": "Prílohy",
+					"transCode": "schema.requests.attachments",
+					"type": "array",
+					"items": {
+						"file": {
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"size": {
+									"type": "number"
+								},
+								"createdOn": {
+									"type": "string"
+								},
+								"mime": {
+									"type": "string"
+								}
+							}
+						},
+						"required": false,
+						"render": {
+							"component": "xpsui-uploadable-file"
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"models": {
+		"request": {
+			"title": "Žiadosť",
+			"transCode": "schema.generalRequests.title",
+			"table": "generalRequests",
+			"security": {
+				"create": {
+					"static": [
+						"Requests - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Requests - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Requests - write - KM"
+					]
+				}
+			},  	 
+			"fireEvents": {
+				"create": "event-general-request-created",
+				"update": "event-general-request-updated"
+			},
+			"properties": {
+				"requestData": {
+					"$ref": "uri://registries/generalRequests#blocks/requestData"
+				},
+				"attachments": {
+					"$ref": "uri://registries/generalRequests#blocks/attachments"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"requestApplicant": {
+			"new": {
+				"extends":"uri://registries/generalRequests#models/request",
+				"properties": {
+					"requestData": {
+						"properties": {
+							"applicant": null,
+							"assignedTo": null,
+							"clubApplicant": null,
+							"setupDate": null,
+							"status": null,
+							"responseText": null,
+							"modifiedOn": null
+						}
+					}
+				}
+			},
+			"view": {
+				"extends":"uri://registries/generalRequests#models/request",
+				"properties": {
+					"requestData": {
+						"properties": {
+							"applicant": {
+								"readOnly": true
+							},
+							"assignedTo": {
+								"readOnly": true
+							},
+							"clubApplicant": {
+								"readOnly": true
+							},
+							"setupDate": {
+								"readOnly": true
+							},
+							"status": {
+								"readOnly": true
+							},
+							"responseText": {
+								"readOnly": true
+							},
+							"modifiedOn": {
+								"readOnly": true
+							}
+						}
+					}
+				}
+			},
+			"search": {
+				"extends": "uri://registries/generalRequests#models/request",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FgeneralRequests~23views~2FrequestApplicant/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "requestData.setupDate",
+						"transCode": "schema.requests.basedata.setupdate"
+					},
+					{
+						"field": "requestData.subject",
+						"transCode": "schema.requests.basedata.subject"
+					},
+					{
+						"field": "requestData.applicant",
+						"transCode": "schema.requests.basedata.applicant"
+					},
+					{
+						"field": "requestData.assignedTo",
+						"transCode": "schema.requests.basedata.assignedto"
+					},
+					{
+						"field": "requestData.modifiedOn",
+						"transCode": "schema.requests.basedata.modifiedOn"
+					},
+					{
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
+					}
+				]
+			}
+		},
+		"requestSolver": {
+			"view": {
+				"extends": "uri://registries/generalRequests#models/request",
+				"properties": {
+					"requestData": {
+						"properties": {
+							"applicant": {
+								"readOnly": true
+							},
+							"subject": {
+								"readOnly": true
+							},
+							"text": {
+								"readOnly": true
+							},
+							"assignedTo": {
+								"readOnly": false
+							},
+							"club": null,
+							"setupDate": {
+								"readOnly": true
+							},
+							"status": {
+								"readOnly": false
+							},
+							"responseText": {
+								"readOnly": false
+							},
+							"modifiedOn": {
+								"readOnly": true
+							}
+						}
+					}
+				}
+			},
+			"search":{
+				"extends":"uri://registries/generalRequests#views/requestApplicant/search",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FgeneralRequests~23views~2FrequestSolver/{{model.id}}"
+						}
+					}
+				]
+			}
+		}
+	}
+}

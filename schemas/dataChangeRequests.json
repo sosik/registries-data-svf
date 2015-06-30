@@ -1,0 +1,246 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/dataChangeRequests#",
+	"models": {
+		"dataChange-km": {
+			"title": "Zmena údajov",
+			"transCode": "schema.dataChangeRequests.title",
+			"table": "dataChangeRequests",
+			"security": {
+				"create": {
+					"static": [
+						"Requests - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Requests - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Requests - write - KM"
+					]
+				}
+			},
+			"fireEvents": {
+				"create": "event-data-request-created",
+				"update": "event-data-request-updated"
+			},
+			"properties": {
+				"peopleObjLink": {
+					"title": "Osoba",
+					"transCode": "schema.people.title",
+					"type": "object",
+					"properties": {
+						"people": {
+							"transCode": "schema.people.title",
+							"type": "object",
+							"required": true,
+							"objectLink2": {
+								"schema": "uri://registries/people#views/fullperson-km/view",
+								"fields": {
+									"surName": "baseData.surName",
+									"name": "baseData.name",
+									"registrationID": "baseData.registrationID"
+								}
+							}
+						}
+					}
+				},
+				"baseData":{
+					"extends": "uri://registries/people#blocks/person",
+					"properties": {
+						"registrationID": null,
+						"id": {
+							"required": false,
+							"unique": null
+						},
+						"name": {
+							"required": false
+						},
+						"surName": {
+							"required": false
+						},
+						"bornName": null,
+						"titleAfter": null,
+						"birthDate": {
+							"required": false
+						},
+						"gender": {
+							"required": false
+						},
+						"titleBefore": null,
+						"nationality": {
+							"required": true
+						},
+						"stateofPerson": null
+					}
+				},
+				"player": {
+					"extends": "uri://registries/people#blocks/player",
+					"properties": {
+						"isPlayer":{
+							"required": false
+						},
+						"playerLicense": null,
+						"expirationOfAgentContract": null,
+						"expiration": null,
+						"clubOfFirstRegistration": null,
+						"dateOfExpiration": null,
+						"dateOfApplicationForId": null,
+						"club": null,
+						"stateOfPlayer":{
+							"required": false
+						},
+						"modifiedOn": null
+					}
+				},
+				"officer": {
+					"extends": "uri://registries/people#blocks/officer",
+					"properties": {
+						"association": null,
+						"note": null,
+						"expiration": null
+					}
+				},
+				"photoInfo": {
+					"title": "Fotografie",
+					"transCode": "schema.people.photoInfo",
+					"type": "object",
+					"properties": {
+						"photo": {
+							"title": "Fotografia",
+							"transCode": "schema.people.photo",
+							"type": "string",
+							"render": {
+								"component": "psui-uploadable-image",
+								"height": 330,
+								"width": 230
+							}
+						}
+					}
+				},
+				"otherInfo": {
+					"extends": "uri://registries/people#blocks/otherInfo",
+					"properties": {
+						"idCardNumber": null,
+						"passportNumber": null,
+						"language":null,
+						"note": {
+							"render": {
+								"component": "psui-textarea"
+							}
+						}
+					}
+				},
+				"attachments": {
+					"$ref": "uri://registries/generalRequests#blocks/attachments"
+				},
+				"requestData": {
+					"extends": "uri://registries/generalRequests#blocks/requestData",
+					"properties":{
+						"subject": null,
+						"text": null,
+						"responseText": null,
+						"applicant": {
+							"readOnly": true
+						},
+						"clubApplicant": {
+							"readOnly": true
+						},
+						"assignedTo": {
+							"readOnly": true
+						},
+						"setupDate": {
+							"readOnly": true
+						},
+						"status": {
+							"readOnly": true
+						}
+					}
+				}
+			}
+		}
+	},
+	"views": {
+		"dataChangeApplicant": {
+			"new" : {
+				"extends":"uri://registries/dataChangeRequests#models/dataChange-km",
+				"properties": {
+					"requestData": null
+				}
+			},
+			"view" : {
+				"$ref":"uri://registries/dataChangeRequests#models/dataChange-km"
+			},
+			"search" : {
+				"extends":"uri://registries/dataChangeRequests#models/dataChange-km",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FdataChangeRequests~23views~2FdataChangeApplicant/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "peopleObjLink.people",
+						"title": "Osoba",
+						"transCode": "schema.people.title"
+					},
+					{
+						"field": "requestData.applicant",
+						"title": "Žiadateľ",
+						"transCode": "schema.requests.basedata.applicant"
+					},
+					{
+						"field": "requestData.clubApplicant",
+						"title": "Klub",
+						"transCode": "schema.requests.basedata.clubApplicant"
+					},
+					{
+						"field": "requestData.status",
+						"title": "Stav",
+						"transCode": "schema.requests.basedata.status"
+					}
+				],
+				"properties": {
+					"photoInfo": null
+				}
+			}
+			
+		},
+		"dataChangeSolver": {
+			"view": {
+				"extends": "uri://registries/dataChangeRequests#models/dataChange-km",
+				"properties": {
+					"requestData": {
+						"properties":{
+							"assignedTo": {
+								"readOnly": false
+							},
+							"status": {
+								"readOnly": false
+							}
+						}
+					}
+				}
+			},
+			"search": {
+				"extends": "uri://registries/dataChangeRequests#views/dataChangeApplicant/search",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FdataChangeRequests~23views~2FdataChangeSolver/{{model.id}}"
+						}
+					}
+				]
+			}
+		}
+	}
+}

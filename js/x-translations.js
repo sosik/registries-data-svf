@@ -455,7 +455,12 @@
 			"schema.requests.basedata.status.closed":"Uzavretá",
 			"schema.requests.attachments":"Prílohy",
 			"schema.requests.basedata.responsetext":"Odpoveď",
-			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny"
+			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny",
+
+			"schema.generalRequests.title":"Všeobecná žiadosť",
+			"schema.registrationRequests.title":"Žiadosť o registráciu",
+			"schema.dataChangeRequests.title":"Žiadosť o zmenu údajov"
+
 		});
 		
 		$translateProvider.translations('cz', {
@@ -883,7 +888,12 @@
 			"schema.requests.basedata.status.closed":"Uzavretá",
 			"schema.requests.attachments":"Prílohy",
 			"schema.requests.basedata.responsetext":"Odpoveď",
-			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny"
+			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny",
+
+			"schema.generalRequests.title":"Všeobecná žádost",
+			"schema.registrationRequests.title":"Žádost o registraci",
+			"schema.dataChangeRequests.title":"Žádost o změnu údajů"
+
 		});
 	}]);
 }(angular));

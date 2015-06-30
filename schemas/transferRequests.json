@@ -1,0 +1,193 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/transferRequests#",
+	"models": {
+		"transfer": {
+			"title": "Zmena kl. príslušnosti",
+			"transCode": "schema.transfer.title",
+			"table": "transferRequests",
+			"security": {
+				"create": {
+					"static": [
+						"Requests - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Requests - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Requests - write - KM"
+					]
+				}
+			},
+			"fireEvents": {
+				"create": "event-transfer-request-created",
+				"update": "event-transfer-request-updated"
+			},
+			"properties": {
+				"transferData": {
+					"extends": "uri://registries/transfers#blocks/baseData",
+					"properties": {
+						"id": null,
+						"player": {
+							"objectLink2": {
+								"schema": "uri://registries/people#views/player-km/view",
+								"fields": {
+									"surName": "baseData.surName",
+									"name": "baseData.name",
+									"registrationID": "baseData.registrationID"
+								}
+							}
+						},
+						"clubFrom": {
+							"objectLink2": {
+								"schema": "uri://registries/organizations#views/club-km/view"
+							}
+						},
+						"clubTo": {
+							"objectLink2": {
+								"schema": "uri://registries/organizations#views/club-km/view" 
+							}
+						},
+						"season": null,
+						"deliveredOn": null,
+						"active": null,
+						"stateOfTransfer": null,
+						"note": {
+							"render": {
+								"component": "psui-textarea"
+							}
+						}
+					}
+				},				
+				"attachments": {
+					"$ref": "uri://registries/generalRequests#blocks/attachments"
+				},
+				"requestData": {
+					"extends": "uri://registries/generalRequests#blocks/requestData",
+					"properties":{
+						"subject": null,
+						"text": null,
+						"responseText": null,
+						"applicant": {
+							"readOnly": true
+						},
+						"clubApplicant": {
+							"readOnly": true
+						},
+						"assignedTo": {
+							"readOnly": true
+						},
+						"setupDate": {
+							"readOnly": true
+						},
+						"status": {
+							"readOnly": true
+						}
+					}
+				}
+			}
+		}
+	},
+	"views": {
+		"transferApplicant": {
+			"new": {
+				"extends": "uri://registries/transferRequests#models/transfer",
+				"properties": {
+					"requestData": null
+				}
+			},
+			"view": {
+				"$ref": "uri://registries/transferRequests#models/transfer"
+			},
+			"search": {
+				"extends": "uri://registries/transferRequests#models/transfer",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FtransferRequests~23views~2FtransferApplicant/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "transferData.typeOfTransfer",
+						"title": "Typ zmeny",
+						"transCode": "schema.transfer.typeOfTransfer"
+					},
+					{
+						"field": "transferData.dateOfRealization",
+						"title": "Dátum realizácie",
+						"transCode": "schema.transfer.dateOfRealization"
+					},
+					{
+						"field": "transferData.player",
+						"title": "Hráč",
+						"transCode": "schema.transfer.player"
+					},
+					{
+						"field": "transferData.clubFrom",
+						"title": "Z klubu",
+						"transCode": "schema.transfer.clubFrom"
+					},
+					{
+						"field": "transferData.clubTo",
+						"title": "Do klubu",
+						"transCode": "schema.transfer.clubTo"
+					},
+					{
+						"field": "requestData.clubApplicant",
+						"title": "Klub",
+						"transCode": "schema.requests.basedata.clubApplicant"
+					},
+					{
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
+					}
+				]
+			}
+		},			
+		"transferSolver": {
+			"view": {
+				"extends": "uri://registries/transferRequests#models/transfer",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "action-link",
+						"title": "Vytvoriť transfer",
+						"schema": "uri://registries/transferRequests#views/transferApplicant",
+						"template": "createTransfer.html"
+					}
+				],
+				"properties": {
+					"requestData": {
+						"properties":{
+							"assignedTo": {
+								"readOnly": false
+							},
+							"status": {
+								"readOnly": false
+							}
+						}
+					}
+				}
+			},
+			"search": {
+				"extends": "uri://registries/transferRequests#views/transferApplicant/search",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FtransferRequests~23views~2FtransferSolver/{{model.id}}"
+						}
+					}
+				]
+			}
+		}
+	}
+}

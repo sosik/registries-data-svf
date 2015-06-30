@@ -1,0 +1,208 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/registrationRequests#",
+	"models": {
+		"peopleRegistration": {
+			"extends": "uri://registries/people#models/fullperson-km",
+			"title": "Registrácia osoby",
+			"transCode": "schema.registrationRequests.title",
+			"table": "registrationRequests",
+			"security": {
+				"create": {
+					"static": [
+						"Requests - write - KM"
+					]
+				},
+				"read": {
+					"static": [
+						"Requests - read - KM"
+					]
+				},
+				"modify": {
+					"static": [
+						"Requests - write - KM"
+					]
+				}
+			},
+			"fireEvents": {
+				"create": "event-registration-request-created",
+				"update": "event-registration-request-updated"
+			},
+			"properties": {
+				"baseData": {
+					"properties": {
+						"id": {
+							"unique": null
+						},
+						"registrationID": null
+					}
+				},
+				"requestData": {
+					"extends": "uri://registries/generalRequests#blocks/requestData",
+					"properties":{
+						"subject": null,
+						"text": null,
+						"responseText": null,
+						"applicant": {
+							"readOnly": true
+						},
+						"clubApplicant": {
+							"readOnly": true
+						},
+						"assignedTo": {
+							"readOnly": true
+						},
+						"setupDate": {
+							"readOnly": true
+						},
+						"status": {
+							"readOnly": true
+						}
+					}
+				},
+				"player": {
+					"properties": {
+						"expirationOfProffesionalContract": null,
+						"registrationCanceled": null,
+						"hostingStartDate": null,
+						"hostingEndDate": null,
+						"validFrom": null,
+						"validTo": null,
+						"modifiedOn": null,
+						"isPlayer": {
+							"required": false
+						},
+						"clubOfFirstRegistration": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							},
+							"required": false
+						},
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							},
+							"required": false
+						},
+						"stateOfPlayer": {
+							"required": false
+						}
+					}
+				},
+				"officer": {
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						}
+					}
+				},
+				"otherInfo": {
+					"properties": {
+						"language": null
+					}
+				},
+				"attachments": {
+					"$ref": "uri://registries/generalRequests#blocks/attachments"
+				}
+			}
+		}
+	},
+	"views": {
+		"peopleRegistrationApplicant": {
+			"new": {
+				"extends": "uri://registries/registrationRequests#models/peopleRegistration",
+				"properties": {
+					"requestData": null
+				}
+			},
+			"view": {
+				"$ref": "uri://registries/registrationRequests#models/peopleRegistration"
+			},
+			"search": {
+				"extends": "uri://registries/registrationRequests#models/peopleRegistration",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FregistrationRequests~23views~2FpeopleRegistrationApplicant/{{model.id}}"
+						}
+					}
+				],
+				"properties": {
+					"photoInfo": null
+				},
+				"listFields": [
+					{
+						"field": "baseData.surName",
+						"title": "Priezvisko",
+						"transCode": "schema.people.surName"
+					},
+					{
+						"field": "baseData.name",
+						"title": "Meno",
+						"transCode": "schema.people.name"
+					},
+					{
+						"field": "baseData.birthDate",
+						"title": "Dátum narodenia",
+						"transCode": "schema.people.birthDate"
+					},
+					{
+						"field": "requestData.clubApplicant",
+						"title": "Klub",
+						"transCode": "schema.requests.basedata.clubApplicant"
+					},
+					{
+						"field": "requestData.applicant",
+						"transCode": "schema.requests.basedata.applicant"
+					},
+					{
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
+					}
+				]
+			}
+		},
+		"peopleRegistrationSolver": {
+			"view": {
+				"extends": "uri://registries/registrationRequests#models/peopleRegistration",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "action-link",
+						"title": "Vytvoriť člena",
+						"schema": "uri://registries/registrationRequests#views/peopleRegistrationApplicant",
+						"template": "createMember.html"
+					}
+				],
+				"properties": {
+					"requestData": {
+						"properties":{
+							"assignedTo": {
+								"readOnly": false
+							},
+							"status": {
+								"readOnly": false
+							}
+						}
+					}
+				}
+			},
+			"search": {
+				"extends": "uri://registries/registrationRequests#views/peopleRegistrationApplicant/search",
+				"title": "Registrácia osoby",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FregistrationRequests~23views~2FpeopleRegistrationSolver/{{model.id}}"
+						}
+					}
+				]
+			}
+		}
+	}
+}

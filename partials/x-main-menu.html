@@ -65,21 +65,21 @@
 	<li ng-show="hasPermissions(['Registry - read'])"><a href="#" class="x-submenu-toggle"><i class="fa fa-tasks fa-2x"></i><span>{{'menu.requests.solver.title' | translate}}</span></a>
 		<ul>
 			<!-- <li><a href="#/registry/search/{{'uri://registries/requests#views/requestSolver/search'|xpsuiuriescape}}"><span>{{'menu.requests.solver.search.lower.level' | translate}}</span></a></li> -->
-			<li><a href="#/registry/search/{{'uri://registries/requests#views/peopleRegistrationSolver/search'|xpsuiuriescape}}"><span>Hľadať registráciu</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/requests#views/dataChangeSolver/search'|xpsuiuriescape}}"><span>Hľadať zmenu údajov</span></a></li>
-			<li><a href="#/registry/search/{{'uri://registries/requests#views/transferSolver/search'|xpsuiuriescape}}"><span>Hľadať žiadosť o transfer</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/registrationRequests#views/peopleRegistrationSolver/search'|xpsuiuriescape}}"><span>Hľadať registráciu</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/dataChangeRequests#views/dataChangeSolver/search'|xpsuiuriescape}}"><span>Hľadať zmenu údajov</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/transferRequests#views/transferSolver/search'|xpsuiuriescape}}"><span>Hľadať žiadosť o transfer</span></a></li>
 		</ul>
 	</li>
 	<li ng-show="hasPermissions(['Registry Requests'])"><a href="#" class="x-submenu-toggle"><i class="fa fa-edit fa-2x"></i><span>{{'menu.requests.title' | translate}}</span></a>
 		<ul>
 			<!-- <li ng-show="hasPermissions(['Registry - write'])"><a href="#/registry/new/{{'uri://registries/requests#views/requestApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['Registry - read'])"><a href="#/registry/search/{{'uri://registries/requests#views/requestApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.lower.level' | translate}}</span></a></li> -->
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/requests#views/peopleRegistrationApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.registration.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/requests#views/peopleRegistrationApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.registration.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/requests#views/dataChangeApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.change.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/requests#views/dataChangeApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.change.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/requests#views/transferApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.transfer.lower.level' | translate}}</span></a></li>
-			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/requests#views/transferApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.transfer.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/registrationRequests#views/peopleRegistrationApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.registration.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/registrationRequests#views/peopleRegistrationApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.registration.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/dataChangeRequests#views/dataChangeApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.change.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/dataChangeRequests#views/dataChangeApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.change.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/new/{{'uri://registries/transferRequests#views/transferApplicant'|xpsuiuriescape}}"><span>{{'menu.requests.new.transfer.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Requests - write - KM'])"><a href="#/registry/search/{{'uri://registries/transferRequests#views/transferApplicant/search'|xpsuiuriescape}}"><span>{{'menu.requests.search.transfer.lower.level' | translate}}</span></a></li>
 		</ul>
 	</li>
 	<li ng-show="hasPermissions(['System User'])"><a href="#" class="x-submenu-toggle"><i class="icon-user fa-2x"></i><span>{{'menu.my.profile.title' | translate}}</span></a>
