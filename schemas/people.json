@@ -19,7 +19,7 @@
 					"type": "string",
 					"required": true,
 					"unique": {
-						"schema": "uri://registries/people#views/fullperson",
+						"schema": "uri://registries/people#views/fullperson/view",
 						"field": "baseData.id"
 					}
 				},
