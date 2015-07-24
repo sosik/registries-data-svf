@@ -11,6 +11,11 @@
 	var renderModule =  module.parent.require('./renderService.js');
 	var transport = nodemailer.createTransport('Sendmail');
 
+	var GEN_REQ_COLLECTION = 'generalRequests';
+	var REG_REQ_COLLECTION = 'registrationRequests';
+	var DATA_REQ_COLLECTION = 'dataChangeRequests';
+	var TRANS_REQ_COLLECTION = 'transferRequests';
+
 
 	/**
 	*	@module server
@@ -21,11 +26,6 @@
 		this.ctx=ctx;
 		var self=this;
 		var renderService = new renderModule.RenderService();
-
-		var requestsDao = new universalDaoModule.UniversalDao(
-			this.ctx.mongoDriver,
-			{collectionName: 'requests'}
-		);
 
 		var userDao = new universalDaoModule.UniversalDao(
 			this.ctx.mongoDriver,
@@ -43,49 +43,60 @@
 			@method handleRequestCreated
 
 		*/
-		this.handleRequestCreated=function(event){
+		this.handleRequestCreated=function(event, collection){
 
 			var entity = event.entity;
 			var solverAddress=this.ctx.config.mails.requestSolverAddress;
+
+			var requestsDao = new universalDaoModule.UniversalDao(
+			this.ctx.mongoDriver,
+			{collectionName: collection}
+			);
 			
-			console.log('mmmmmmmmmmmmmm: ' + JSON.stringify(event));
+			// console.log('mmmmmmmmmmmmmm: ' + JSON.stringify(event));
 
+			if(!entity.requestData){
 				entity.requestData = {};
-				entity.requestData.setupDate=dateUtils.nowToReverse();
-				entity.requestData.status='created';
-				entity.requestData.applicant={schema:"uri://registries/people#views/fullperson-km/view",registry:'people',oid:event.user.id};
-				entity.requestData.clubApplicant={schema:"uri://registries/organizations#views/club-km/view",registry:'organizations',oid:event.user.officer.club.oid};
+			}
+			entity.requestData.setupDate=dateUtils.nowToReverse();
+			entity.requestData.status='created';
+			entity.requestData.applicant={schema:"uri://registries/people#views/fullperson-km/view",registry:'people',oid:event.user.id};
 
+			if (event.user && event.user.officer && event.user.officer.club) {
+				entity.requestData.clubApplicant = {
+					schema: "uri://registries/organizations#views/club-km/view",
+					oid: event.user.officer.club.oid
+				};
+			} else {
+				log.warn('Applicant %s does not have assigned club as officer but should have', event.user.id);
+			}
+				
+			var qf=QueryFilter.create();
+			qf.addCriterium("systemCredentials.login.email","eq",solverAddress);
 
-				var qf=QueryFilter.create();
-				qf.addCriterium("systemCredentials.login.email","eq",solverAddress);
+			userDao.find(qf, function(err, data) {
+				if (err){
+					log.error(err);
+					return;
+				}
 
-				userDao.find(qf, function(err, data) {
-					if (err){
-						log.error(err);
+				// assign to and send mail.
+				if (data.length==1){
+					var solver=data[0];
+					entity.requestData.assignedTo={schema:"uri://registries/people#views/fullperson-km/view",registry:'people',oid:solver.id};
+				} else {
+					log.warn('Failed to find solver with configured email %s in database, request left withoud solver', solverAddress);
+				}
+				self.sendRequestCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+				
+				requestsDao.save(entity,function(err2){
+					if (err2) {
+						log.error(err2);
 						return;
 					}
-
-					// assign to and send mail.
-					if (data.length==1){
-						var solver=data[0];
-						
-							entity.requestData.assignedTo={schema:"uri://registries/people#views/fullperson-km/view",registry:'people',oid:solver.id};
-						
-						
-					}
-					self.sendRequestCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
-
-					requestsDao.save(entity,function(err,data){
-						if (err) {
-							log.error(err);
-							return;
-						}
-						log.debug('requests created: event handled');
-					});
-
+					log.debug('requests created: event handled');
 				});
-
+			});
 		};
 
 		/**
@@ -120,13 +131,13 @@
 				}
 
 				if (entity.requestData.applicant){
-							userDao.get(entity.requestData.applicant.oid,function(err,applicant){
-								if (err){
-									log.error(err);
-									return;
-								}
-								self.sendRequestModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
-							});
+					userDao.get(entity.requestData.applicant.oid,function(err,applicant){
+						if (err){
+							log.error(err);
+							return;
+						}
+						self.sendRequestModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+					});
 				}
 			// }
 		}
@@ -171,15 +182,28 @@
 	RequestChangedHandler.prototype.handle = function(event) {
 		log.info('handle called',event,RequestChangedHandler.prototype.ctx);
 
-		if ('event-request-created' === event.eventType){
-			this.handleRequestCreated(event);
-		}else if ('event-request-updated' === event.eventType){
-			this.handleRequestModified(event);
+		if (event.eventType === 'event-general-request-created') {
+			this.handleRequestCreated(event, GEN_REQ_COLLECTION);
+		}else if(event.eventType === 'event-registration-request-created') {
+			this.handleRequestCreated(event, REG_REQ_COLLECTION);
+		}else if(event.eventType === 'event-data-request-created') {
+			this.handleRequestCreated(event, DATA_REQ_COLLECTION);
+		}else if(event.eventType === 'event-transfer-request-created') {
+			this.handleRequestCreated(event, TRANS_REQ_COLLECTION);
+		}else if (event.eventType === 'event-general-request-updated') {
+			this.handleRequestModified(event, GEN_REQ_COLLECTION);
+		}else if(event.eventType === 'event-registration-request-updated') {
+			this.handleRequestModified(event, REG_REQ_COLLECTION);
+		}else if(event.eventType === 'event-data-request-updated') {
+			this.handleRequestModified(event, DATA_REQ_COLLECTION);
+		}else if(event.eventType === 'event-transfer-request-updated') {
+			this.handleRequestModified(event, TRANS_REQ_COLLECTION);
 		}
 	};
 
 	RequestChangedHandler.prototype.getType=function(){
-		return ["event-request-created","event-request-updated"];
+		return ["event-general-request-created","event-registration-request-created","event-data-request-created", "event-transfer-request-created",
+				"event-general-request-updated","event-registration-request-updated","event-data-request-updated", "event-transfer-request-updated"];
 	};
 
 	module.exports = function( ctx) {

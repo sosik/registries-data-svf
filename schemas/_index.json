@@ -20,8 +20,11 @@
 	"transfers.json",
 	"userSecurity.json",
 	"refereeReport.json",
-	"requests.json",
 	"schedule.json",
 	"nomination.json",
-	"competitionPart.json"
+	"competitionPart.json",
+	"registrationRequests.json",
+	"dataChangeRequests.json",
+	"transferRequests.json",
+	"generalRequests.json"
 ]
