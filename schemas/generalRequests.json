@@ -102,6 +102,12 @@
 					"type": "array",
 					"items": {
 						"file": {
+							"title": "Súbor",
+							"transCode": "schema.requests.file",
+							"required": false,
+							"render": {
+								"component": "xpsui-uploadable-file"
+							},
 							"properties": {
 								"name": {
 									"type": "string"
@@ -116,10 +122,6 @@
 									"type": "string"
 								}
 							}
-						},
-						"required": false,
-						"render": {
-							"component": "xpsui-uploadable-file"
 						}
 					}
 				}
