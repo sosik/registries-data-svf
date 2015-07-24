@@ -84,21 +84,19 @@
 				if (data.length==1){
 					var solver=data[0];
 					entity.requestData.assignedTo={schema:"uri://registries/people#views/fullperson-km/view",registry:'people',oid:solver.id};
+				} else {
+					log.warn('Failed to find solver with configured email %s in database, request left withoud solver', solverAddress);
 				}
 				self.sendRequestCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
 				
-				requestsDao.save(entity,function(err,data){
-					if (err) {
-						log.error(err);
+				requestsDao.save(entity,function(err2){
+					if (err2) {
+						log.error(err2);
 						return;
 					}
 					log.debug('requests created: event handled');
 				});
 			});
-			
-
-			
-
 		};
 
 		/**
@@ -184,21 +182,21 @@
 	RequestChangedHandler.prototype.handle = function(event) {
 		log.info('handle called',event,RequestChangedHandler.prototype.ctx);
 
-		if ('event-general-request-created' === event.eventType){
+		if (event.eventType === 'event-general-request-created') {
 			this.handleRequestCreated(event, GEN_REQ_COLLECTION);
-		}else if('event-registration-request-created' === event.eventType){
+		}else if(event.eventType === 'event-registration-request-created') {
 			this.handleRequestCreated(event, REG_REQ_COLLECTION);
-		}else if('event-data-request-created' === event.eventType){
+		}else if(event.eventType === 'event-data-request-created') {
 			this.handleRequestCreated(event, DATA_REQ_COLLECTION);
-		}else if('event-transfer-request-created' === event.eventType){
+		}else if(event.eventType === 'event-transfer-request-created') {
 			this.handleRequestCreated(event, TRANS_REQ_COLLECTION);
-		}else if ('event-general-request-updated' === event.eventType){
+		}else if (event.eventType === 'event-general-request-updated') {
 			this.handleRequestModified(event, GEN_REQ_COLLECTION);
-		}else if('event-registration-request-updated' === event.eventType){
+		}else if(event.eventType === 'event-registration-request-updated') {
 			this.handleRequestModified(event, REG_REQ_COLLECTION);
-		}else if('event-data-request-updated' === event.eventType){
-			this.handleRequestModified(event, DATA_REQ_COLLECTION)
-		}else if('event-transfer-request-updated' === event.eventType){
+		}else if(event.eventType === 'event-data-request-updated') {
+			this.handleRequestModified(event, DATA_REQ_COLLECTION);
+		}else if(event.eventType === 'event-transfer-request-updated') {
 			this.handleRequestModified(event, TRANS_REQ_COLLECTION);
 		}
 	};
