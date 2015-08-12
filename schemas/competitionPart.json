@@ -67,10 +67,15 @@
 					"transCode": "schema.competitionPart.listOfTeam.team",
 					"type": "array",
 					"items": {
-						"objectLink2": {
-							"schema":"uri://registries/rosters#views/rosters/view",
-							"fields":{
-								"name": "baseData.prName"
+						"team": {
+							"type": "object",
+							"title": "Družstvo",
+							"transCode": "schema.competitionPart.listOfTeam.team",
+							"objectLink2": {
+								"schema":"uri://registries/rosters#views/rosters/view",
+								"fields":{
+									"name": "baseData.prName"
+								}
 							}
 						}
 					}

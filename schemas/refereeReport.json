@@ -332,12 +332,16 @@
 					"transCode": "schema.refereeReport.listOfPlayers.players",
 					"type": "array",
 					"items": {
-						"objectLink2": {
-							"schema": "uri://registries/people#views/player/view",
-							"fields": {
-								"surName": "baseData.surName",
-								"firstName": "baseData.name",
-								"registrationID": "baseData.registrationID"
+						"player": {
+							"title": "Hráč",
+							"transCode": "schema.refereeReport.listOfPlayers.player",
+							"objectLink2": {
+								"schema": "uri://registries/people#views/player/view",
+								"fields": {
+									"surName": "baseData.surName",
+									"firstName": "baseData.name",
+									"registrationID": "baseData.registrationID"
+								}
 							}
 						}
 					}
@@ -412,12 +416,16 @@
 					"transCode": "schema.refereeReport.listOfPlayers.players",
 					"type": "array",
 					"items": {
-						"objectLink2": {
-							"schema": "uri://registries/people#views/player/view",
-							"fields": {
-								"surName": "baseData.surName",
-								"firstName": "baseData.name",
-								"birthDate": "baseData.registrationID"
+						"player": {
+							"title": "Hráč",
+							"transCode": "schema.refereeReport.listOfPlayers.player",
+							"objectLink2": {
+								"schema": "uri://registries/people#views/player/view",
+								"fields": {
+									"surName": "baseData.surName",
+									"firstName": "baseData.name",
+									"birthDate": "baseData.registrationID"
+								}
 							}
 						}
 					}

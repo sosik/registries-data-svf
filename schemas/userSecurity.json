@@ -80,10 +80,7 @@
 					"profiles": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"properties": {
-								"id": "string"
-							}
+							"id": "string"
 						}
 					},
 					"login":{

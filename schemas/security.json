@@ -139,19 +139,13 @@
 			"groups": {
 				"type": "array",
 				"items": {
-					"type": "object",
-					"properties": {
-						"id": "string"
-					}
+					"id": "string"
 				}
 			},
 			"profiles": {
 				"type": "array",
 				"items": {
-					"type": "object",
-					"properties": {
-						"id": "string"
-					}
+					"id": "string"
 				}
 			}
 		}
@@ -206,39 +200,28 @@
 					"groups": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"properties": {
-								"id": "string"
-							}
+							"id": "string"
 						}
 					},
 					"forcedCriteria": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"properties": {
-								"applySchema": "String",
-								"criteria": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"f": "string",
-											"op": "string",
-											"v": "string",
-											"obj":{
-												"type":"object",
-												"properties":{
-													"refData": {
-														"type":"object",
-														"properties":{
-															"name":"string"
-														}
-													}
-												}
+							"applySchema": "string",
+							"crits": {
+								"type": "array",
+								"items": {
+									"f": "string",
+									"op": "string",
+									"v": "string",
+									"obj":{
+										"refData": {
+											"type":"object",
+											"properties":{
+												"name":"string"
 											}
 										}
-									}
+									},
+									"expr": "string"
 								}
 							}
 						}

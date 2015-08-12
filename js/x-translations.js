@@ -320,6 +320,7 @@
 			"schema.roster.aCoach":"Asistent trénera",
 			"schema.roster.listOfPlayers":"Zoznam hráčov",
 			"schema.roster.players":"Hráči",
+			"schema.roster.player":"Hráč",
 
 			"schema.ageCategory.title":"Veková kategória",
 			"schema.ageCategory.baseData": "Základné údaje",
@@ -426,6 +427,7 @@
 			"schema.refereeReport.listOfPlayersHome":"Zoznam hráčov - Domáci",
 			"schema.refereeReport.listOfPlayersGuest":"Zoznam hráčov - Hostia",
 			"schema.refereeReport.listOfPlayers.players":"Hráči",
+			"schema.refereeReport.listOfPlayers.player":"Hráč",
 
 			"schema.nomination.title":"Nominácia",
 			"schema.nomination.baseData":"Základné informácie",
@@ -454,8 +456,14 @@
 			"schema.requests.basedata.status.processing":"Spracovávaná",
 			"schema.requests.basedata.status.closed":"Uzavretá",
 			"schema.requests.attachments":"Prílohy",
+			"schema.requests.file":"Súbor",
 			"schema.requests.basedata.responsetext":"Odpoveď",
-			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny"
+			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny",
+
+			"schema.generalRequests.title":"Všeobecná žiadosť",
+			"schema.registrationRequests.title":"Žiadosť o registráciu",
+			"schema.dataChangeRequests.title":"Žiadosť o zmenu údajov"
+
 		});
 		
 		$translateProvider.translations('cz', {
@@ -748,6 +756,7 @@
 			"schema.roster.aCoach":"Asistent trénera",
 			"schema.roster.listOfPlayers":"Zoznam hráčov",
 			"schema.roster.players":"Hráči",
+			"schema.roster.player":"Hráč",
 
 			"schema.ageCategory.title":"Veková kategória",
 			"schema.ageCategory.baseData": "Základné údaje",
@@ -854,6 +863,7 @@
 			"schema.refereeReport.listOfPlayersHome":"Zoznam hráčov - Domáci",
 			"schema.refereeReport.listOfPlayersGuest":"Zoznam hráčov - Hostia",
 			"schema.refereeReport.listOfPlayers.players":"Hráči",
+			"schema.refereeReport.listOfPlayers.player":"Hráč",
 
 			"schema.nomination.title":"Nominácia",
 			"schema.nomination.baseData":"Základné informácie",
@@ -882,8 +892,14 @@
 			"schema.requests.basedata.status.processing":"Spracovávaná",
 			"schema.requests.basedata.status.closed":"Uzavretá",
 			"schema.requests.attachments":"Prílohy",
+			"schema.requests.file":"Soubor",
 			"schema.requests.basedata.responsetext":"Odpoveď",
-			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny"
+			"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny",
+
+			"schema.generalRequests.title":"Všeobecná žádost",
+			"schema.registrationRequests.title":"Žádost o registraci",
+			"schema.dataChangeRequests.title":"Žádost o změnu údajů"
+
 		});
 	}]);
 }(angular));
